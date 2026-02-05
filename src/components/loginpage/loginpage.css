@@ -397,6 +397,22 @@
             text-shadow: 0 0 10px var(--neon-pink);
         }
 
+        .login-message {
+            margin-top: 16px;
+            text-align: center;
+            font-size: 0.85rem;
+            min-height: 20px;
+            opacity: 0.9;
+        }
+
+        .login-message[data-type="error"] {
+            color: #ff4d4d;
+        }
+
+        .login-message[data-type="success"] {
+            color: #3cff9e;
+        }
+
         /* Stats display */
         .stats-display {
             display: flex;

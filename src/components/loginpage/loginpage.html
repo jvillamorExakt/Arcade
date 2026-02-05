@@ -40,6 +40,7 @@
                     <label class="input-label">◆ OPERATOR ID</label>
                     <input 
                         type="text" 
+                        id="operatorId"
                         class="cyber-input" 
                         placeholder="ENTER_USERNAME"
                         required
@@ -51,6 +52,7 @@
                     <label class="input-label">◆ ACCESS CODE</label>
                     <input 
                         type="password" 
+                        id="accessCode"
                         class="cyber-input" 
                         placeholder="************"
                         required
@@ -70,6 +72,8 @@
                     + NEW OPERATOR
                 </button>
             </form>
+
+            <div class="login-message" id="loginMessage"></div>
 
             <div class="stats-display">
                 <div class="stat-item">
@@ -99,8 +103,6 @@
         ▸ PRESS START ◂
     </div>
 <div class="transition-overlay" id="transitionOverlay"></div>
-    <script src="login.js">
-      
-    </script>
+    <script src="login.js"></script>
 </body>
 </html>
