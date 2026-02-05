@@ -1,0 +1,563 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Manage Quests - AEL Arcade</title>
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Orbitron:wght@400;700;900&display=swap"
+      rel="stylesheet"
+    />
+
+    <style>
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      body {
+        font-family: "Press Start 2P", cursive;
+        background: #0b233d;
+        color: #fff;
+        height: 100vh;
+        overflow: hidden;
+      }
+
+      .app {
+        display: flex;
+        height: 100vh;
+      }
+
+      /* Sidebar */
+      .sidebar {
+        width: 260px;
+        background: linear-gradient(180deg, #ff8c00, #ff2fa1, #00c8ff);
+        padding: 20px;
+        display: flex;
+        flex-direction: column;
+      }
+
+      .logo {
+        font-size: 1.3rem;
+        margin-bottom: 30px;
+      }
+
+      .profile {
+        background: rgba(0, 0, 0, 0.35);
+        padding: 15px;
+        border-radius: 6px;
+        font-size: 0.55rem;
+        margin-bottom: 20px;
+      }
+
+      .nav a {
+        display: block;
+        padding: 12px;
+        margin-bottom: 10px;
+        font-size: 0.55rem;
+        text-decoration: none;
+        color: #fff;
+        border-radius: 4px;
+        background: rgba(0, 0, 0, 0.25);
+        transition: 0.2s;
+      }
+
+      .nav a:hover {
+        background: rgba(0, 0, 0, 0.5);
+      }
+
+      /* Main Content */
+      .main {
+        flex: 1;
+        padding: 25px;
+        overflow-y: auto;
+        background: #0b233d;
+      }
+
+      h1 {
+        color: #00ffff;
+        text-shadow:
+          0 0 15px #00ffff,
+          0 0 40px #ff00ff;
+        margin-bottom: 20px;
+        font-size: 1.5rem;
+      }
+
+      /* Add Quest Button */
+      .modal-btn {
+        display: inline-block;
+        padding: 12px 20px;
+        background: linear-gradient(90deg, #ff8c00, #ff2fa1);
+        border-radius: 6px;
+        font-size: 0.6rem;
+        font-weight: bold;
+        color: #fff;
+        border: none;
+        cursor: pointer;
+        transition: 0.25s;
+        margin-bottom: 20px;
+      }
+
+      .modal-btn:hover {
+        background: linear-gradient(90deg, #ff2fa1, #00c8ff);
+      }
+
+      /* Quest Cards */
+      .quest-cards {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+        gap: 20px;
+      }
+
+      .quest-card {
+        background: linear-gradient(180deg, #111, #000);
+        border: 2px solid #00ffff;
+        border-radius: 10px;
+        padding: 25px;
+        text-align: center;
+        font-size: 0.6rem;
+        box-shadow: 0 0 20px rgba(0, 255, 255, 0.3);
+        transition: 0.25s;
+      }
+
+      .quest-card:hover {
+        transform: translateY(-6px);
+        box-shadow: 0 0 35px rgba(255, 0, 255, 0.7);
+        border-color: #ff00ff;
+      }
+
+      .quest-title {
+        font-weight: bold;
+        margin-bottom: 10px;
+        font-size: 0.65rem;
+      }
+
+      .quest-desc {
+        font-size: 0.55rem;
+        margin-bottom: 15px;
+      }
+
+      .quest-stats {
+        display: flex;
+        justify-content: center; /* center horizontally */
+        gap: 20px; /* space between EXP and GOLD */
+        margin-bottom: 15px;
+      }
+
+      .stat-box {
+        display: flex;
+        flex-direction: column;
+        font-size: 0.5rem;
+      }
+
+      .stat-value {
+        font-weight: bold;
+      }
+
+      .quest-actions a {
+        display: inline-block;
+        margin: 5px;
+        padding: 5px 8px;
+        background: linear-gradient(90deg, #ff8c00, #ff2fa1);
+        border-radius: 4px;
+        font-size: 0.5rem;
+        text-decoration: none;
+        color: #fff;
+        transition: 0.25s;
+      }
+
+      .quest-actions a:hover {
+        background: linear-gradient(90deg, #ff2fa1, #00c8ff);
+      }
+
+      /* Modal styling */
+      .modal {
+        display: none;
+        position: fixed;
+        z-index: 1000;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.7);
+        backdrop-filter: blur(3px);
+      }
+
+      .modal-content {
+        background: linear-gradient(180deg, #111, #000);
+        margin: 5% auto;
+        padding: 40px;
+        border: 2px solid #00ffff;
+        border-radius: 12px;
+        width: 500px; /* increased width */
+        max-width: 90%;
+        position: relative;
+        box-shadow: 0 0 50px rgba(0, 255, 255, 0.8); /* stronger glow */
+        text-align: center;
+      }
+
+      .modal-content h2 {
+        color: #00ffff;
+        text-shadow:
+          0 0 15px #00ffff,
+          0 0 50px #ff00ff; /* more glow */
+        margin-bottom: 20px;
+        font-size: 1.2rem; /* slightly larger */
+      }
+
+      .close {
+        position: absolute;
+        top: 10px;
+        right: 15px;
+        font-size: 1.2rem;
+        color: #ff00ff;
+        cursor: pointer;
+      }
+
+      #questForm input,
+      #questForm textarea {
+        width: 90%;
+        margin-bottom: 12px;
+        padding: 12px;
+        border: none;
+        border-radius: 6px;
+        font-family: "Press Start 2P", monospace;
+        font-size: 0.7rem;
+      }
+
+      #questForm button {
+        width: 95%;
+        padding: 14px;
+        border: none;
+        border-radius: 6px;
+        background: linear-gradient(90deg, #ff8c00, #ff2fa1);
+        color: #fff;
+        font-weight: bold;
+        cursor: pointer;
+        transition: 0.25s;
+      }
+
+      #questForm button:hover {
+        background: linear-gradient(90deg, #ff2fa1, #00c8ff);
+      }
+
+      /* Scanlines */
+      .scanlines::before {
+        content: "";
+        position: fixed;
+        inset: 0;
+        background: repeating-linear-gradient(
+          to bottom,
+          rgba(255, 255, 255, 0.03),
+          rgba(255, 255, 255, 0.03) 1px,
+          transparent 1px,
+          transparent 3px
+        );
+        pointer-events: none;
+      }
+    </style>
+  </head>
+
+  <body class="scanlines">
+    <div class="app">
+      <!-- Sidebar -->
+      <aside class="sidebar">
+        <div class="logo">🎮 AEL</div>
+        <div class="profile">
+          USER: ADMIN<br /><br />
+          LEVEL: 99<br /><br />
+          XP: 999 / 1000
+        </div>
+
+        <nav class="nav">
+          <a href="MainDashboard.html">HOME</a>
+          <a href="QuestPage.html">QUESTS</a>
+          <a href="#">CAMPAIGNS</a>
+          <a href="#">REFERRALS</a>
+          <a href="#">REWARDS</a>
+        </nav>
+
+        <br />
+        <div class="nav-section">
+          <h4>Quest Management</h4>
+          <nav class="nav">
+            <a href="ManageQuest.html">🛠️ Manage Quest</a>
+            <a href="QuestStats.html">📊 Quest Stats</a>
+          </nav>
+        </div>
+
+        <br />
+        <div class="nav-section">
+          <h4>User Management</h4>
+          <nav class="nav">
+            <a href="ManageUsers.html">🛠️ Manage Users</a>
+          </nav>
+        </div>
+      </aside>
+
+      <!-- Main Content -->
+      <main class="main">
+        <h1>🛠️ Manage Quests</h1>
+
+        <!-- Add Quest Button -->
+        <button id="openAddQuestBtn" class="modal-btn">➕ Add Quest</button>
+
+        <!-- Quest Cards -->
+        <div class="quest-cards" id="questCards">
+          <div class="quest-card">
+            <div class="quest-title">Community Onboarding</div>
+            <div class="quest-desc">
+              Join official AEL community spaces and learn the fundamentals of
+              the ecosystem.
+            </div>
+            <div class="quest-stats">
+              <div class="stat-box">
+                <div class="stat-value">+150 🌟</div>
+                <div class="stat-label">EXP</div>
+              </div>
+              <div class="stat-box">
+                <div class="stat-value">+30 🪙</div>
+                <div class="stat-label">GOLD</div>
+              </div>
+            </div>
+            <div class="quest-actions">
+              <a href="#" class="editQuestBtn">✏️ Edit</a>
+              <a href="#" class="deleteQuestBtn">🗑️ Delete</a>
+            </div>
+          </div>
+
+          <div class="quest-card">
+            <div class="quest-title">Dungeon Crawl</div>
+            <div class="quest-desc">
+              Explore the dungeon and defeat enemies to gain loot and XP.
+            </div>
+            <div class="quest-stats">
+              <div class="stat-box">
+                <div class="stat-value">+300 🌟</div>
+                <div class="stat-label">EXP</div>
+              </div>
+              <div class="stat-box">
+                <div class="stat-value">+50 🪙</div>
+                <div class="stat-label">GOLD</div>
+              </div>
+            </div>
+            <div class="quest-actions">
+              <a href="#" class="editQuestBtn">✏️ Edit</a>
+              <a href="#" class="deleteQuestBtn">🗑️ Delete</a>
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+
+    <!-- Quest Modal -->
+    <div id="questModal" class="modal">
+      <div class="modal-content">
+        <span class="close">&times;</span>
+        <h2 id="questModalTitle">➕ Add Quest</h2>
+        <form id="questForm">
+          <label for="title">Quest Title</label>
+          <input
+            type="text"
+            id="title"
+            name="title"
+            placeholder="Enter quest title"
+            required
+          />
+
+          <label for="desc">Description</label>
+          <textarea
+            id="desc"
+            name="desc"
+            rows="4"
+            placeholder="Enter description"
+            required
+          ></textarea>
+
+          <label for="exp">EXP</label>
+          <input
+            type="number"
+            id="exp"
+            name="exp"
+            placeholder="e.g., 150"
+            required
+          />
+
+          <label for="gold">GOLD</label>
+          <input
+            type="number"
+            id="gold"
+            name="gold"
+            placeholder="e.g., 30"
+            required
+          />
+
+          <button type="submit">Save</button>
+        </form>
+      </div>
+    </div>
+
+    <!-- Delete Confirmation Modal -->
+    <div id="deleteModal" class="modal">
+      <div class="modal-content">
+        <span class="close">&times;</span>
+        <h2>🗑️ Delete Quest</h2>
+        <p>Are you sure you want to delete this quest?</p>
+        <button
+          id="confirmDeleteBtn"
+          style="
+            margin: 10px;
+            padding: 10px;
+            border: none;
+            border-radius: 6px;
+            background: linear-gradient(90deg, #ff8c00, #ff2fa1);
+            color: #fff;
+            font-weight: bold;
+            cursor: pointer;
+          "
+        >
+          Yes, Delete
+        </button>
+        <button
+          id="cancelDeleteBtn"
+          style="
+            margin: 10px;
+            padding: 10px;
+            border: none;
+            border-radius: 6px;
+            background: linear-gradient(90deg, #ff2fa1, #00c8ff);
+            color: #fff;
+            font-weight: bold;
+            cursor: pointer;
+          "
+        >
+          Cancel
+        </button>
+      </div>
+    </div>
+
+    <script>
+      const questModal = document.getElementById("questModal");
+      const questModalTitle = document.getElementById("questModalTitle");
+      const openAddQuestBtn = document.getElementById("openAddQuestBtn");
+      const closeBtns = document.querySelectorAll(".close");
+      const questForm = document.getElementById("questForm");
+      const questCards = document.getElementById("questCards");
+      const deleteModal = document.getElementById("deleteModal");
+      const confirmDeleteBtn = document.getElementById("confirmDeleteBtn");
+      const cancelDeleteBtn = document.getElementById("cancelDeleteBtn");
+
+      let currentEditCard = null;
+      let currentDeleteCard = null;
+
+      // Open Add Quest modal
+      openAddQuestBtn.onclick = () => {
+        questModalTitle.innerText = "➕ Add Quest";
+        questForm.reset();
+        currentEditCard = null;
+        questModal.style.display = "block";
+      };
+
+      // Close modals
+      closeBtns.forEach(
+        (btn) =>
+          (btn.onclick = () => {
+            questModal.style.display = "none";
+            deleteModal.style.display = "none";
+          }),
+      );
+      window.onclick = (e) => {
+        if (e.target === questModal) questModal.style.display = "none";
+        if (e.target === deleteModal) deleteModal.style.display = "none";
+      };
+
+      // Add/Edit quest
+      questForm.addEventListener("submit", (e) => {
+        e.preventDefault();
+        const title = questForm.title.value;
+        const desc = questForm.desc.value;
+        const exp = questForm.exp.value;
+        const gold = questForm.gold.value;
+
+        if (currentEditCard) {
+          currentEditCard.querySelector(".quest-title").innerText = title;
+          currentEditCard.querySelector(".quest-desc").innerText = desc;
+          currentEditCard.querySelectorAll(".stat-value")[0].innerText =
+            `+${exp} 🌟`;
+          currentEditCard.querySelectorAll(".stat-value")[1].innerText =
+            `+${gold} 🪙`;
+        } else {
+          const newCard = document.createElement("div");
+          newCard.className = "quest-card";
+          newCard.innerHTML = `
+            <div class="quest-title">${title}</div>
+            <div class="quest-desc">${desc}</div>
+            <div class="quest-stats">
+              <div class="stat-box">
+                <div class="stat-value">+${exp} 🌟</div>
+                <div class="stat-label">EXP</div>
+              </div>
+              <div class="stat-box">
+                <div class="stat-value">+${gold} 🪙</div>
+                <div class="stat-label">GOLD</div>
+              </div>
+            </div>
+            <div class="quest-actions">
+              <a href="#" class="editQuestBtn">✏️ Edit</a>
+              <a href="#" class="deleteQuestBtn">🗑️ Delete</a>
+            </div>
+          `;
+          questCards.appendChild(newCard);
+          attachCardEvents(newCard);
+        }
+
+        questForm.reset();
+        questModal.style.display = "none";
+      });
+
+      // Attach Edit/Delete events to a quest card
+      function attachCardEvents(card) {
+        const editBtn = card.querySelector(".editQuestBtn");
+        const deleteBtn = card.querySelector(".deleteQuestBtn");
+
+        editBtn.onclick = (e) => {
+          e.preventDefault();
+          currentEditCard = card;
+          questModalTitle.innerText = "✏️ Edit Quest";
+          questForm.title.value = card.querySelector(".quest-title").innerText;
+          questForm.desc.value = card.querySelector(".quest-desc").innerText;
+          questForm.exp.value = card
+            .querySelectorAll(".stat-value")[0]
+            .innerText.replace("🌟", "")
+            .replace("+", "");
+          questForm.gold.value = card
+            .querySelectorAll(".stat-value")[1]
+            .innerText.replace("🪙", "")
+            .replace("+", "");
+          questModal.style.display = "block";
+        };
+
+        deleteBtn.onclick = (e) => {
+          e.preventDefault();
+          currentDeleteCard = card;
+          deleteModal.style.display = "block";
+        };
+      }
+
+      // Initialize existing cards
+      document.querySelectorAll(".quest-card").forEach(attachCardEvents);
+
+      // Delete modal buttons
+      confirmDeleteBtn.onclick = () => {
+        if (currentDeleteCard) currentDeleteCard.remove();
+        deleteModal.style.display = "none";
+      };
+      cancelDeleteBtn.onclick = () => {
+        deleteModal.style.display = "none";
+        currentDeleteCard = null;
+      };
+    </script>
+  </body>
+</html>

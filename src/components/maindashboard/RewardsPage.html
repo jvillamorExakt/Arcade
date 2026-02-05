@@ -1,0 +1,349 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AEL | Rewards</title>
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Orbitron:wght@400;700;900&display=swap"
+      rel="stylesheet"
+    />
+
+    <style>
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+      body {
+        font-family: "Press Start 2P", cursive;
+        background: #0b233d;
+        color: #fff;
+        height: 100vh;
+        overflow: hidden;
+      }
+      .app {
+        display: flex;
+        height: 100vh;
+      }
+
+      /* Sidebar */
+      .sidebar {
+        width: 260px;
+        background: linear-gradient(180deg, #ff8c00, #ff2fa1, #00c8ff);
+        padding: 20px;
+      }
+      .logo {
+        font-size: 1.3rem;
+        margin-bottom: 30px;
+      }
+      .nav a {
+        display: block;
+        padding: 12px;
+        margin-bottom: 10px;
+        font-size: 0.55rem;
+        text-decoration: none;
+        color: #fff;
+        border-radius: 4px;
+        background: rgba(0, 0, 0, 0.25);
+      }
+      .nav a.active,
+      .nav a:hover {
+        background: rgba(0, 0, 0, 0.55);
+      }
+
+      /* Main */
+      .main {
+        flex: 1;
+        padding: 30px;
+        overflow-y: auto;
+        background: #0b233d;
+      }
+      .page-title {
+        font-size: 1.2rem;
+        margin-bottom: 8px;
+        color: #00ffff;
+        text-shadow: 0 0 10px #00ffff;
+      }
+      .page-subtitle {
+        font-size: 0.55rem;
+        color: #cbd5e1;
+        margin-bottom: 20px;
+      }
+
+      /* User Status */
+      .user-status {
+        display: flex;
+        align-items: center;
+        gap: 20px;
+        margin-bottom: 30px;
+      }
+
+      .user-icon img {
+        width: 60px;
+        height: 60px;
+        border-radius: 12px;
+        border: 2px solid #00ffff;
+        box-shadow: 0 0 20px rgba(0, 255, 255, 0.25);
+      }
+
+      .status-boxes {
+        display: flex;
+        gap: 20px;
+      }
+
+      .status-box {
+        background: rgba(0, 0, 0, 0.35);
+        border: 2px solid #00ffff;
+        border-radius: 12px;
+        padding: 20px;
+        text-align: center;
+        min-width: 120px;
+        box-shadow: 0 0 20px rgba(0, 255, 255, 0.25);
+      }
+      .status-label {
+        font-size: 0.45rem;
+        color: #cbd5e1;
+        margin-top: 4px;
+      }
+      .status-value {
+        font-size: 0.85rem;
+        color: #00ffff;
+      }
+
+      /* Rewards Grid */
+      .reward-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(420px, 1fr));
+        gap: 26px;
+      }
+      .reward-card {
+        display: flex;
+        gap: 24px;
+        background: linear-gradient(180deg, #0f1f33, #081726);
+        border: 2px solid #00ffff;
+        border-radius: 18px;
+        padding: 28px;
+        min-height: 180px;
+        box-shadow: 0 0 22px rgba(0, 255, 255, 0.25);
+        transition: all 0.25s ease;
+        flex-direction: column;
+        justify-content: space-between;
+      }
+      .reward-card:hover {
+        transform: translateY(-8px);
+        border-color: #ff00ff;
+        box-shadow: 0 0 38px rgba(255, 0, 255, 0.6);
+      }
+
+      .reward-info {
+        display: flex;
+        flex-direction: column;
+      }
+      .reward-title {
+        font-size: 0.75rem;
+        margin-bottom: 14px;
+      }
+      .reward-desc {
+        font-size: 0.55rem;
+        color: #cbd5e1;
+        line-height: 1.7;
+      }
+
+      .reward-points {
+        display: flex;
+        justify-content: flex-start;
+        gap: 14px;
+        margin-bottom: 16px;
+      }
+      .points-box {
+        background: rgba(0, 0, 0, 0.35);
+        border-radius: 10px;
+        padding: 10px 8px;
+        text-align: center;
+      }
+      .points-value {
+        font-size: 0.85rem;
+        color: #00ffff;
+      }
+      .points-label {
+        font-size: 0.45rem;
+        color: #cbd5e1;
+        margin-top: 4px;
+      }
+
+      /* Redeem Button */
+      .redeem-btn {
+        margin-top: 16px;
+        align-self: flex-start;
+        padding: 10px 20px;
+        font-size: 0.55rem;
+        font-family: "Press Start 2P", cursive;
+        border: 2px solid #00ffff;
+        border-radius: 8px;
+        background: #081726;
+        color: #00ffff;
+        cursor: pointer;
+        text-transform: uppercase;
+        transition: all 0.3s ease;
+      }
+      .redeem-btn:hover {
+        background: #00ffff;
+        color: #081726;
+        box-shadow: 0 0 20px #00ffff;
+      }
+      .redeem-btn.disabled {
+        border-color: #555;
+        color: #555;
+        cursor: not-allowed;
+        box-shadow: none;
+      }
+      .redeem-btn.disabled:hover {
+        background: #081726;
+        color: #555;
+        box-shadow: none;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="app">
+      <!-- Sidebar -->
+      <aside class="sidebar">
+        <div class="logo">🎮 AEL</div>
+        <nav class="nav">
+          <a href="MainDashboard.html">HOME</a>
+          <a href="QuestPage.html">QUEST BOARD</a>
+          <a href="#">CAMPAIGNS</a>
+          <a href="#">REFERRALS</a>
+          <a href="#" class="active">REWARDS</a>
+        </nav>
+      </aside>
+
+      <!-- Main -->
+      <main class="main">
+        <div class="page-title">REWARDS</div>
+        <div class="page-subtitle">
+          Redeem your points for exciting rewards below.
+        </div>
+
+        <!-- User Status Panel -->
+        <div class="user-status">
+          <!-- User Icon -->
+          <div class="user-icon">
+            <img
+              src="https://cdn-icons-png.flaticon.com/512/252/252025.png"
+              alt="User Avatar"
+            />
+          </div>
+
+          <!-- Status Boxes -->
+          <div class="status-boxes">
+            <div class="status-box">
+              <div id="user-exp" class="status-value">0</div>
+              <div class="status-label">EXP</div>
+            </div>
+            <div class="status-box">
+              <div id="user-points" class="status-value">0</div>
+              <div class="status-label">POINTS</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Rewards Grid -->
+        <section class="reward-grid">
+          <div class="reward-card" data-points="500">
+            <div class="reward-points">
+              <div class="points-box">
+                <div class="points-value">500✨</div>
+                <div class="points-label">POINTS</div>
+              </div>
+            </div>
+            <div class="reward-info">
+              <div class="reward-title">Exclusive Avatar Skin</div>
+              <div class="reward-desc">
+                Unlock a unique avatar skin to showcase your achievements.
+              </div>
+              <button class="redeem-btn">Redeem</button>
+            </div>
+          </div>
+
+          <div class="reward-card" data-points="1000">
+            <div class="reward-points">
+              <div class="points-box">
+                <div class="points-value">1000✨</div>
+                <div class="points-label">POINTS</div>
+              </div>
+            </div>
+            <div class="reward-info">
+              <div class="reward-title">VIP Community Badge</div>
+              <div class="reward-desc">
+                Earn a special badge that highlights your top status.
+              </div>
+              <button class="redeem-btn">Redeem</button>
+            </div>
+          </div>
+
+          <div class="reward-card" data-points="1500">
+            <div class="reward-points">
+              <div class="points-box">
+                <div class="points-value">1500✨</div>
+                <div class="points-label">POINTS</div>
+              </div>
+            </div>
+            <div class="reward-info">
+              <div class="reward-title">Merchandise Voucher</div>
+              <div class="reward-desc">
+                Redeem points for official merchandise from the AEL store.
+              </div>
+              <button class="redeem-btn">Redeem</button>
+            </div>
+          </div>
+
+          <div class="reward-card" data-points="2000">
+            <div class="reward-points">
+              <div class="points-box">
+                <div class="points-value">2000✨</div>
+                <div class="points-label">POINTS</div>
+              </div>
+            </div>
+            <div class="reward-info">
+              <div class="reward-title">Game Access Pass</div>
+              <div class="reward-desc">
+                Get early access to upcoming games and features.
+              </div>
+              <button class="redeem-btn">Redeem</button>
+            </div>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <script>
+      // Sample user
+      const user = {
+        name: "PlayerOne",
+        avatar: "https://cdn-icons-png.flaticon.com/512/252/252025.png", // pixel icon from Flaticon
+        currentEXP: 1200,
+        currentPoints: 750,
+      };
+
+      // Update status panel
+      document.getElementById("user-exp").textContent = user.currentEXP;
+      document.getElementById("user-points").textContent = user.currentPoints;
+      document.querySelector(".user-icon img").src = user.avatar;
+
+      // Enable/disable redeem buttons based on points
+      const rewards = document.querySelectorAll(".reward-card");
+      rewards.forEach((card) => {
+        const requiredPoints = parseInt(card.dataset.points);
+        const button = card.querySelector(".redeem-btn");
+        if (user.currentPoints < requiredPoints) {
+          button.classList.add("disabled");
+          button.disabled = true;
+        }
+      });
+    </script>
+  </body>
+</html>
