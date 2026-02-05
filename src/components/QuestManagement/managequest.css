@@ -1,0 +1,344 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: "Press Start 2P", cursive;
+  background: #0b233d;
+  color: #fff;
+  height: 100vh;
+  overflow: hidden;
+  padding: 0; /* Specify all sides */
+  margin: 0; /* Specify all sides */
+}
+
+.app {
+  display: flex;
+  height: 100vh;
+  padding: 0; /* Added padding specification */
+  margin: 0; /* Added margin specification */
+}
+
+/* Sidebar */
+.sidebar {
+  width: 260px;
+  background: linear-gradient(180deg, #ff8c00, #ff2fa1, #00c8ff);
+  padding: 20px; /* Already has padding on all sides */
+  display: flex;
+  flex-direction: column;
+}
+
+.logo {
+  font-size: 1.3rem;
+  margin: 0 0 30px 0; /* Specified all sides (top right bottom left) */
+  padding: 10px; /* Added padding to all sides */
+}
+
+.profile {
+  background: rgba(0, 0, 0, 0.35);
+  padding: 15px; /* Already has padding on all sides */
+  border-radius: 6px;
+  font-size: 0.55rem;
+  margin: 0 0 20px 0; /* Specified all sides */
+}
+
+.nav a {
+  display: block;
+  padding: 12px; /* Already has padding on all sides */
+  margin: 0 0 10px 0; /* Specified all sides */
+  font-size: 0.55rem;
+  text-decoration: none;
+  color: #fff;
+  border-radius: 4px;
+  background: rgba(0, 0, 0, 0.25);
+  transition: 0.2s;
+}
+
+.nav a:hover {
+  background: rgba(0, 0, 0, 0.5);
+}
+
+/* Main Content */
+.main {
+  flex: 1;
+  padding: 25px; /* Already has padding on all sides */
+  overflow-y: auto;
+  background: #0b233d;
+  margin: 0; /* Added margin to all sides */
+}
+
+h1 {
+  color: #00ffff;
+  text-shadow:
+    0 0 15px #00ffff,
+    0 0 40px #ff00ff;
+  margin: 0 0 20px 0; /* Specified all sides */
+  font-size: 1.5rem;
+  padding: 10px 10px 10px 20px; /* top right bottom left */
+}
+
+/* Add Quest Button */
+.modal-btn {
+  display: inline-block;
+  padding: 12px 20px; /* top/bottom left/right */
+  background: linear-gradient(90deg, #ff8c00, #ff2fa1);
+  border-radius: 6px;
+  font-size: 0.6rem;
+  font-weight: bold;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  transition: 0.25s;
+  margin: 0 0 20px 20px; /* Specified all sides - added left margin */
+}
+
+.modal-btn:hover {
+  background: linear-gradient(90deg, #ff2fa1, #00c8ff);
+}
+
+/* Quest Cards */
+/* Quest Cards Container */
+.quest-cards {
+  display: flex;
+  flex-direction: column; /* top to bottom */
+  gap: 20px;
+  padding: 20px;
+}
+
+/* Individual Quest Card */
+.quest-card {
+  background: linear-gradient(180deg, #111, #000);
+  border: 2px solid #00ffff;
+  border-radius: 10px;
+  padding: 24px;
+  font-size: 0.6rem;
+  text-align: center; /* center everything */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-shadow: 0 0 20px rgba(0, 255, 255, 0.3);
+  transition: 0.25s;
+}
+
+.quest-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 0 35px rgba(255, 0, 255, 0.7);
+  border-color: #ff00ff;
+}
+
+/* Quest Title and Description */
+.quest-title {
+  font-size: 0.65rem;
+  font-weight: bold;
+  margin-bottom: 8px;
+}
+
+.quest-desc {
+  font-size: 0.55rem;
+  margin-bottom: 14px;
+  color: #cbd5e1;
+  text-align: center;
+}
+
+/* Quest Stats: EXP and GOLD */
+.quest-stats {
+  display: flex;
+  flex-direction: row;
+  justify-content: center; /* horizontally center the stats */
+  align-items: center; /* vertically center the stats */
+  gap: 12px; /* retain previous gap */
+  margin-bottom: 14px; /* spacing below stats */
+}
+
+.quest-stats .stat-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* center value above label */
+  justify-content: center; /* vertical centering */
+  margin: 0;
+  padding: 0;
+}
+
+.stat-value {
+  font-weight: bold;
+  padding: 5px; /* retain original padding */
+  margin: 3px; /* retain original margin */
+  text-align: center;
+}
+
+.stat-label {
+  font-size: 0.55rem;
+  color: #cbd5e1;
+  text-align: center;
+}
+
+/* Quest Action Buttons */
+.quest-actions {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  flex-wrap: wrap; /* wrap if buttons overflow */
+}
+
+.quest-actions a {
+  display: inline-block;
+  margin: 5px;
+  padding: 5px 8px; /* retain original size */
+  background: linear-gradient(90deg, #ff8c00, #ff2fa1);
+  border-radius: 4px;
+  font-size: 0.5rem;
+  font-weight: bold;
+  text-decoration: none;
+  color: #fff;
+  transition: 0.25s;
+  text-align: center;
+}
+
+.quest-actions a:hover {
+  background: linear-gradient(90deg, #ff2fa1, #00c8ff);
+}
+
+/* Modal styling */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(3px);
+  padding: 0; /* Added padding specification */
+  margin: 0; /* Added margin specification */
+}
+
+.modal-content {
+  background: linear-gradient(180deg, #111, #000);
+  margin: 5% auto; /* top/bottom auto for left/right centering */
+  padding: 40px; /* Already has padding on all sides */
+  border: 2px solid #00ffff;
+  border-radius: 12px;
+  width: 500px;
+  max-width: 90%;
+  position: relative;
+  box-shadow: 0 0 50px rgba(0, 255, 255, 0.8);
+  text-align: center;
+}
+
+.modal-content h2 {
+  color: #00ffff;
+  text-shadow:
+    0 0 15px #00ffff,
+    0 0 50px #ff00ff;
+  margin: 0 0 20px 0; /* Specified all sides */
+  font-size: 1.2rem;
+  padding: 10px; /* Added padding to all sides */
+}
+
+.close {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  font-size: 1.2rem;
+  color: #ff00ff;
+  cursor: pointer;
+  padding: 5px; /* Added padding to all sides */
+  margin: 0; /* Added margin specification */
+}
+
+#questForm input,
+#questForm textarea {
+  width: 90%;
+  margin: 0 0 12px 0; /* Specified all sides */
+  padding: 12px; /* Already has padding on all sides */
+  border: none;
+  border-radius: 6px;
+  font-family: "Press Start 2P", monospace;
+  font-size: 0.7rem;
+}
+
+#questForm label {
+  display: block;
+  margin: 10px 0 5px 0; /* Added margin to labels */
+  padding: 5px; /* Added padding to labels */
+}
+
+#questForm button {
+  width: 95%;
+  padding: 14px; /* Already has padding on all sides */
+  border: none;
+  border-radius: 6px;
+  background: linear-gradient(90deg, #ff8c00, #ff2fa1);
+  color: #fff;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.25s;
+  margin: 10px 0 0 0; /* Added margin */
+}
+
+#questForm button:hover {
+  background: linear-gradient(90deg, #ff2fa1, #00c8ff);
+}
+
+/* Scanlines */
+.scanlines::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background: repeating-linear-gradient(
+    to bottom,
+    rgba(255, 255, 255, 0.03),
+    rgba(255, 255, 255, 0.03) 1px,
+    transparent 1px,
+    transparent 3px
+  );
+  pointer-events: none;
+  padding: 0; /* Added padding specification */
+  margin: 0; /* Added margin specification */
+}
+
+#questForm input,
+#questForm textarea,
+#questForm select {
+  width: 90%;
+  padding: 12px;
+  margin: 0 0 14px 0;
+
+  border: none;
+  border-radius: 6px;
+
+  font-family: "Press Start 2P", monospace;
+  font-size: 0.7rem;
+
+  background: rgba(255, 255, 255, 0.95);
+  color: #000;
+}
+/* View Details Modal Styling */
+#viewDetailsModal .modal-content {
+  width: 600px; /* Make it wider */
+  max-width: 95%; /* Responsive max width */
+  padding: 50px 40px; /* Slightly more padding for readability */
+  font-size: 0.75rem; /* Slightly larger font for easier reading */
+  text-align: left; /* Align text to left for better details view */
+}
+
+#viewDetailsModal .modal-content h2 {
+  font-size: 1.3rem; /* Larger title for view modal */
+  margin-bottom: 25px;
+  padding: 10px 0;
+  text-align: center;
+}
+
+#viewDetailsModal .modal-content p {
+  margin-bottom: 12px;
+  line-height: 1.4;
+  color: #cbd5e1;
+}
+
+#viewDetailsModal .modal-content span {
+  font-weight: bold;
+  color: #00ffff;
+}
