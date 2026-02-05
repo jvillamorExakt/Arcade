@@ -12,6 +12,7 @@
     />
 
     <link rel="stylesheet" href="questboard.css" />
+    <link rel="stylesheet" href="../QuestManagement/managequest.css" />
   </head>
 
   <body>
@@ -38,117 +39,49 @@
 
         <!-- OPEN QUEST TAB -->
         <div class="tab-content active" id="open-quest">
-          <section class="quest-grid">
-            <div class="quest-card">
-              <div class="quest-stats">
-                <div class="stat-box">
-                  <div class="stat-value">+150</div>
-                  <div class="stat-label">EXP</div>
-                </div>
-                <div class="stat-box">
-                  <div class="stat-value">+30🪙</div>
-                  <div class="stat-label">GOLD</div>
-                </div>
-              </div>
-              <div class="quest-info">
-                <div class="quest-title">Community Onboarding</div>
-                <div class="quest-desc">
-                  Join official AEL community spaces and learn the fundamentals of
-                  the ecosystem.
-                </div>
-              </div>
-            </div>
-
-            <div class="quest-card">
-              <div class="quest-stats">
-                <div class="stat-box">
-                  <div class="stat-value">+150</div>
-                  <div class="stat-label">EXP</div>
-                </div>
-                <div class="stat-box">
-                  <div class="stat-value">+30🪙</div>
-                  <div class="stat-label">GOLD</div>
-                </div>
-              </div>
-              <div class="quest-info">
-                <div class="quest-title">Community Onboarding</div>
-                <div class="quest-desc">
-                  Join official AEL community spaces and learn the fundamentals of
-                  the ecosystem.
-                </div>
-              </div>
-            </div>
-
-            <div class="quest-card">
-              <div class="quest-stats">
-                <div class="stat-box">
-                  <div class="stat-value">+150</div>
-                  <div class="stat-label">EXP</div>
-                </div>
-                <div class="stat-box">
-                  <div class="stat-value">+30🪙</div>
-                  <div class="stat-label">GOLD</div>
-                </div>
-              </div>
-              <div class="quest-info">
-                <div class="quest-title">Community Onboarding</div>
-                <div class="quest-desc">
-                  Join official AEL community spaces and learn the fundamentals of
-                  the ecosystem.
-                </div>
-              </div>
-            </div>
-          </section>
+          <section class="quest-grid" id="openQuestGrid"></section>
         </div>
 
         <!-- MY QUEST TAB -->
         <div class="tab-content" id="my-quest">
-          <section class="quest-grid">
-            <div class="quest-card">
-              <div class="quest-stats">
-                <div class="stat-box">
-                  <div class="stat-value">+200</div>
-                  <div class="stat-label">EXP</div>
-                </div>
-                <div class="stat-box">
-                  <div class="stat-value">+50🪙</div>
-                  <div class="stat-label">GOLD</div>
-                </div>
-              </div>
-              <div class="quest-info">
-                <div class="quest-title">My Active Quest</div>
-                <div class="quest-desc">
-                  Your personal quest progress and achievements.
-                </div>
-              </div>
-            </div>
+          <section class="quest-grid" id="myQuestGrid">
+            
           </section>
+          
         </div>
 
         <!-- GROUP QUEST TAB -->
         <div class="tab-content" id="group-quest">
-          <section class="quest-grid">
-            <div class="quest-card">
-              <div class="quest-stats">
-                <div class="stat-box">
-                  <div class="stat-value">+300</div>
-                  <div class="stat-label">EXP</div>
-                </div>
-                <div class="stat-box">
-                  <div class="stat-value">+75🪙</div>
-                  <div class="stat-label">GOLD</div>
-                </div>
-              </div>
-              <div class="quest-info">
-                <div class="quest-title">Team Challenge</div>
-                <div class="quest-desc">
-                  Collaborate with other players to complete group objectives.
-                </div>
-              </div>
-            </div>
-          </section>
+          <section class="quest-grid" id="groupQuestGrid"></section>
         </div>
 
+        <!-- View Details Modal -->
+        <div id="viewDetailsModal" class="modal">
+          <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2 id="viewQuestTitle">Quest Details</h2>
+            <p>
+              <strong>Description:</strong> <span id="viewQuestDesc"></span>
+            </p>
+            <p><strong>EXP:</strong> <span id="viewQuestExp"></span></p>
+            <p><strong>GOLD:</strong> <span id="viewQuestGold"></span></p>
+            <p><strong>Difficulty:</strong> <span id="viewQuestDiff"></span></p>
+            <p><strong>Type:</strong> <span id="viewQuestType"></span></p>
+            <p><strong>Status:</strong> <span id="viewQuestStatus"></span></p>
+            <p>
+              <strong>Department:</strong>
+              <span id="viewQuestDepartment"></span>
+            </p>
+            <p>
+              <strong>Sub Department:</strong>
+              <span id="viewQuestCategory"></span>
+            </p>
+            <p>
+              <strong>Assigned User:</strong>
+              <span id="viewAssignedUser">None</span>
+            </p>
+          </div>
+        </div>
       </main>
     </div>
     

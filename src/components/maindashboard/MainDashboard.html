@@ -20,6 +20,7 @@
       #main-content {
         transition: opacity 0.3s ease;
         width: 100%;
+        overflow: auto;
       }
     </style>
   </head>
@@ -97,19 +98,19 @@
                 <div class="stats-grid">
                   <div class="stat-box completed">
                     <span class="stat-icon">🏆</span>
-                    <span class="stat-value">12</span>
+                    <span class="stat-value" id="statCompleted">0</span>
                     <span class="stat-label">COMPLETED</span>
                   </div>
 
                   <div class="stat-box active">
                     <span class="stat-icon">⚔️</span>
-                    <span class="stat-value">3</span>
+                    <span class="stat-value" id="statActive">0</span>
                     <span class="stat-label">ACTIVE</span>
                   </div>
 
                   <div class="stat-box pending">
                     <span class="stat-icon">⏳</span>
-                    <span class="stat-value">5</span>
+                    <span class="stat-value" id="statPending">0</span>
                     <span class="stat-label">PENDING</span>
                   </div>
                 </div>
@@ -139,13 +140,7 @@
             <!-- RIGHT SIDE -->
             <aside class="leaderboard">
               <h2>LEADERBOARD</h2>
-              <ul>
-                <li><span>#1</span> PLAYERX <em>5000 XP</em></li>
-                <li><span>#2</span> PLAYERY <em>4200 XP</em></li>
-                <li><span>#3</span> PLAYERZ <em>3900 XP</em></li>
-                <li><span>#4</span> PLAYER1 <em>3500 XP</em></li>
-                <li><span>#5</span> PLAYER2 <em>3000 XP</em></li>
-              </ul>
+              <ul id="leaderboardList"></ul>
             </aside>
           </section>
         </main>
@@ -153,6 +148,7 @@
     </div>
 
     <script src="router.js"></script>
+    <script src="maindashboard.js"></script>
     <script src="../Rewards/rewards.js"></script>
     <script src="../UserManagement/user.js"></script>
     <script src="../QuestManagement/manage.js"></script>

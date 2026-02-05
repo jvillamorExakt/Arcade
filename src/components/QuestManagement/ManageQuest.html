@@ -82,72 +82,7 @@
         <button id="openAddQuestBtn" class="modal-btn">➕ Add Quest</button>
 
         <!-- Quest Cards -->
-        <div class="quest-cards" id="questCards">
-          <div
-            class="quest-card"
-            data-title="Community Onboarding"
-            data-desc="Join official AEL community spaces and learn the fundamentals of the ecosystem."
-            data-exp="150"
-            data-gold="30"
-            data-diff="1"
-            data-type="open"
-            data-assigneduser="Juan Dela Cruz"
-          >
-            <div class="quest-title">Community Onboarding</div>
-            <div class="quest-desc">
-              Join official AEL community spaces and learn the fundamentals of
-              the ecosystem.
-            </div>
-            <div class="quest-stats">
-              <div class="stat-box">
-                <div class="stat-value">+150 🌟</div>
-                <div class="stat-label">EXP</div>
-              </div>
-              <div class="stat-box">
-                <div class="stat-value">+30 🪙</div>
-                <div class="stat-label">GOLD</div>
-              </div>
-            </div>
-            <div class="quest-actions">
-              <a href="#" class="editQuestBtn">✏️ Edit</a>
-              <a href="#" class="deleteQuestBtn">🗑️ Delete</a>
-              <a href="#" class="viewDetailsBtn">🔍 View Details</a>
-              <a href="#" class="completeQuestBtn">✅ Mark Complete</a>
-            </div>
-          </div>
-
-          <div
-            class="quest-card"
-            data-title="Dungeon Crawl"
-            data-desc="Explore the dungeon and defeat enemies to gain loot and XP."
-            data-exp="150"
-            data-gold="30"
-            data-diff="2"
-            data-type="group"
-            data-assigneduser="Maria Santos, Pedro Reyes"
-          >
-            <div class="quest-title">Dungeon Crawl</div>
-            <div class="quest-desc">
-              Explore the dungeon and defeat enemies to gain loot and XP.
-            </div>
-            <div class="quest-stats">
-              <div class="stat-box">
-                <div class="stat-value">+150 🌟</div>
-                <div class="stat-label">EXP</div>
-              </div>
-              <div class="stat-box">
-                <div class="stat-value">+30 🪙</div>
-                <div class="stat-label">GOLD</div>
-              </div>
-            </div>
-            <div class="quest-actions">
-              <a href="#" class="editQuestBtn">✏️ Edit</a>
-              <a href="#" class="deleteQuestBtn">🗑️ Delete</a>
-              <a href="#" class="viewDetailsBtn">🔍 View Details</a>
-              <a href="#" class="completeQuestBtn">✅ Mark Complete</a>
-            </div>
-          </div>
-        </div>
+        <div class="quest-cards" id="questCards"></div>
 
         <!-- Quest Modal -->
         <div id="questModal" class="modal">
@@ -195,6 +130,23 @@
                 placeholder="e.g., 30"
                 required
               />
+              <label for="status">Status</label>
+              <select id="status" name="status" required>
+                <option value="open">Open</option>
+                <option value="in_progress">In Progress</option>
+                <option value="completed">Completed</option>
+              </select>
+              <label for="departmentSelect">Department</label>
+              <select id="departmentSelect" name="departmentSelect" required>
+                <option value="">Select department</option>
+                <option value="QA Department">QA Department</option>
+              </select>
+              <label for="categorySelect">Sub Department</label>
+              <select id="categorySelect" name="categorySelect" required>
+                <option value="">Select sub department</option>
+                <option value="Web Developer">Web Developer</option>
+                <option value="Quality Assurance">Quality Assurance</option>
+              </select>
               <label for="questType">Quest Type</label>
               <select id="questType" name="questType" required>
                 <option value="">Select quest type</option>
@@ -205,11 +157,8 @@
 
               <div id="specificUsersWrapper" style="display: none">
                 <label for="specificUsers">Assign to User</label>
-                <select id="specificUsers" name="specificUsers">
+                <select id="specificUsers" name="specificUsers" multiple>
                   <option value="">Select user</option>
-                  <option value="1">Juan Dela Cruz</option>
-                  <option value="2">Maria Santos</option>
-                  <option value="3">Pedro Reyes</option>
                 </select>
               </div>
 
@@ -279,6 +228,15 @@
             <p><strong>GOLD:</strong> <span id="viewQuestGold"></span></p>
             <p><strong>Difficulty:</strong> <span id="viewQuestDiff"></span></p>
             <p><strong>Type:</strong> <span id="viewQuestType"></span></p>
+            <p><strong>Status:</strong> <span id="viewQuestStatus"></span></p>
+            <p>
+              <strong>Department:</strong>
+              <span id="viewQuestDepartment"></span>
+            </p>
+            <p>
+              <strong>Sub Department:</strong>
+              <span id="viewQuestCategory"></span>
+            </p>
             <p>
               <strong>Assigned User:</strong>
               <span id="viewAssignedUser">None</span>
@@ -289,6 +247,6 @@
     </div>
 
     <!-- Link external script -->
-    <script src="managequest.js"></script>
+    <script src="manage.js"></script>
   </body>
 </html>

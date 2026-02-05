@@ -66,7 +66,8 @@ body {
   padding: 25px; /* Already has padding on all sides */
   overflow-y: auto;
   background: #0b233d;
-  margin: 0; /* Added margin to all sides */
+  margin: 0;
+  overflow: auto;/* Added margin to all sides */
 }
 
 h1 {
@@ -213,6 +214,7 @@ h1 {
   backdrop-filter: blur(3px);
   padding: 0; /* Added padding specification */
   margin: 0; /* Added margin specification */
+  overflow: auto;
 }
 
 .modal-content {

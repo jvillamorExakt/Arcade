@@ -19,33 +19,7 @@
         <h1>🛠️ Manage Users</h1>
         <button id="openModal" class="add-user-btn">➕ Add User</button>
 
-        <div class="user-cards">
-          <div class="user-card">
-            <div class="user-title">PLAYER1</div>
-            <div class="user-detail">Email: player1@example.com</div>
-            <div class="user-detail">Level: 5</div>
-            <div class="user-detail">Role: Member</div>
-            <div class="user-detail">Department: Development</div>
-            <div class="user-detail">Sub Department: Frontend</div>
-            <div class="user-actions">
-              <a href="#">✏️ Edit</a>
-              <a href="#">🗑️ Delete</a>
-            </div>
-          </div>
-
-          <div class="user-card">
-            <div class="user-title">MODERATOR1</div>
-            <div class="user-detail">Email: mod1@example.com</div>
-            <div class="user-detail">Level: 20</div>
-            <div class="user-detail">Role: Quest Maker</div>
-            <div class="user-detail">Department: Marketing</div>
-            <div class="user-detail">Sub Department: SEO</div>
-            <div class="user-actions">
-              <a href="#">✏️ Edit</a>
-              <a href="#">🗑️ Delete</a>
-            </div>
-          </div>
-        </div>
+        <div class="user-cards" id="userCards"></div>
 
         <!-- Add User Modal -->
         <div id="userModal" class="modal">
@@ -53,6 +27,12 @@
             <span class="close">&times;</span>
             <h2>➕ Add New User</h2>
             <form id="addUserForm">
+              <input
+                type="text"
+                id="fullName"
+                placeholder="Full Name"
+                required
+              />
               <input
                 type="text"
                 id="username"
@@ -65,6 +45,11 @@
                 id="level"
                 placeholder="Level"
                 min="1"
+              />
+              <input
+                type="password"
+                id="password"
+                placeholder="Password"
                 required
               />
 
@@ -79,18 +64,13 @@
               <div id="extraFields" style="display: none; margin-top: 10px">
                 <select id="department">
                   <option value="">Select Department</option>
-                  <option value="design">Technical Department</option>
-                  <option value="development">QA Deparment</option>
-                  <option value="marketing">
-                    System Engineering Department
-                  </option>
+                  <option value="Technical Department">Technical Department</option>
                 </select>
 
                 <select id="subdepartment">
                   <option value="">Select Sub Department</option>
-                  <option value="frontend">Web Developer</option>
-                  <option value="backend">System Engineer</option>
-                  <option value="qa">Quality Assurance</option>
+                  <option value="Web Developer">Web Developer</option>
+                  <option value="Quality Assurance">Quality Assurance</option>
                 </select>
               </div>
 
@@ -105,9 +85,10 @@
             <span class="close">&times;</span>
             <h2>✏️ Edit User</h2>
             <form id="editUserForm">
-              <input type="text" id="editUsername" required />
+              <input type="text" id="editFullName" required />
+              <input type="text" id="editUsername" disabled />
               <input type="email" id="editEmail" required />
-              <input type="number" id="editLevel" min="1" required />
+              <input type="number" id="editLevel" min="1" />
 
               <select id="editRole" required>
                 <option value="">Select Role</option>
@@ -119,18 +100,13 @@
               <div id="editExtraFields" style="display: none">
                 <select id="editDepartment">
                   <option value="">Select Department</option>
-                  <option value="design">Technical Department</option>
-                  <option value="development">QA Deparment</option>
-                  <option value="marketing">
-                    System Engineering Department
-                  </option>
+                  <option value="QA Department">QA Department</option>
                 </select>
 
                 <select id="editSubdepartment">
                   <option value="">Select Sub Department</option>
-                  <option value="frontend">Web Developer</option>
-                  <option value="backend">System Engineer</option>
-                  <option value="qa">Quality Assurance</option>
+                  <option value="Web Developer">Web Developer</option>
+                  <option value="Quality Assurance">Quality Assurance</option>
                 </select>
               </div>
 

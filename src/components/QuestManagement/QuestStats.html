@@ -57,45 +57,20 @@
 
         <!-- Stats Cards -->
         <section class="stats">
-          <div class="stat-card">Total Quests: 12 🗂️</div>
-          <div class="stat-card">Total EXP Awarded: 3,450 🌟</div>
-          <div class="stat-card">Total GOLD Awarded: 750 🪙</div>
+          <div class="stat-card">Total Quests: <span id="totalQuests">0</span> 🗂️</div>
+          <div class="stat-card">Total EXP Awarded: <span id="totalExp">0</span> 🌟</div>
+          <div class="stat-card">Total GOLD Awarded: <span id="totalGold">0</span> 🪙</div>
           <div class="stat-card">
-            Active: 5 🎯 | Completed: 7 ✅ | Pending: 2 ⏳
+            Active: <span id="activeQuests">0</span> 🎯 | Completed:
+            <span id="completedQuests">0</span> ✅ | Pending:
+            <span id="pendingQuests">0</span> ⏳
           </div>
         </section>
 
         <h1>🏆 Top Quests</h1>
-        <div class="quest-cards">
-          <div class="quest-card">
-            <div class="quest-title">Dungeon Crawl</div>
-            <div class="quest-stats">
-              <div class="stat-box">
-                <div class="stat-value">+300 🌟</div>
-                <div class="stat-label">EXP</div>
-              </div>
-              <div class="stat-box">
-                <div class="stat-value">+50 🪙</div>
-                <div class="stat-label">GOLD</div>
-              </div>
-            </div>
-          </div>
-
-          <div class="quest-card">
-            <div class="quest-title">Community Onboarding</div>
-            <div class="quest-stats">
-              <div class="stat-box">
-                <div class="stat-value">+150 🌟</div>
-                <div class="stat-label">EXP</div>
-              </div>
-              <div class="stat-box">
-                <div class="stat-value">+30 🪙</div>
-                <div class="stat-label">GOLD</div>
-              </div>
-            </div>
-          </div>
-        </div>
+        <div class="quest-cards" id="topQuests"></div>
       </main>
     </div>
+    <script src="queststats.js"></script>
   </body>
 </html>

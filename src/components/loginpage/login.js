@@ -172,6 +172,18 @@
         if (data.name) {
           localStorage.setItem("userName", data.name);
         }
+        if (data.profile) {
+          localStorage.setItem("userProfile", JSON.stringify(data.profile));
+          let roleList = [];
+          if (Array.isArray(data.profile.roles)) {
+            roleList = data.profile.roles;
+          } else if (typeof data.profile.roles === "string") {
+            roleList = data.profile.roles.split(",").map((role) => role.trim());
+          } else if (typeof data.profile.role === "string") {
+            roleList = data.profile.role.split(",").map((role) => role.trim());
+          }
+          localStorage.setItem("userRoles", JSON.stringify(roleList));
+        }
 
         setMessage(messageEl, `Access granted. Welcome, ${data.name || data.userId}.`, "success");
 
