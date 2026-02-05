@@ -10,7 +10,9 @@ const routes = {
     'quests': '../QuestBoard/QuestPage.html',
     'campaigns': '../campaigns/Campaigns.html',
     'referrals': '../referrals/Referrals.html',
-    'rewards': '../rewards/Rewards.html'
+    'rewards': '../rewards/Rewards.html',
+    'questmanagement' : '../QuestManagement/ManageQuest.html',
+    'queststats' : '../QuestManagement/QuestStats.html',
 };
 
 let homeContent = '';
