@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bounty Hunter - Cyber Login</title>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="loginpage.css">
+</head>
+<body>
+    <!-- Grid background -->
+    <div class="grid-background"></div>
+
+    <!-- Stars -->
+    <div class="stars" id="stars"></div>
+
+    <!-- Floating particles -->
+    <div id="particles"></div>
+
+    <!-- Main container -->
+    <div class="container">
+        <!-- Logo -->
+        <div class="logo-container">
+            <div class="logo-text glitch">
+                ARCADE EXAKT<br>LEVELING
+            </div>
+            <div class="subtitle">// Cyber Quest Protocol //</div>
+            
+            <div class="pixel-character">🎮</div>
+        </div>
+
+        <!-- Login card -->
+        <div class="login-card">
+            <div class="card-header">
+                ▸ ACCESS TERMINAL ◂
+            </div>
+
+            <form id="loginForm">
+                <div class="input-group">
+                    <label class="input-label">◆ OPERATOR ID</label>
+                    <input 
+                        type="text" 
+                        class="cyber-input" 
+                        placeholder="ENTER_USERNAME"
+                        required
+                        autocomplete="username"
+                    >
+                </div>
+
+                <div class="input-group">
+                    <label class="input-label">◆ ACCESS CODE</label>
+                    <input 
+                        type="password" 
+                        class="cyber-input" 
+                        placeholder="************"
+                        required
+                        autocomplete="current-password"
+                    >
+                </div>
+
+                <div class="loading-bar" id="loadingBar">
+                    <div class="loading-progress"></div>
+                </div>
+
+                <button type="submit" class="neon-btn">
+                    ▸ JACK IN ◂
+                </button>
+
+                <button type="button" class="neon-btn secondary-btn" onclick="showRegister()">
+                    + NEW OPERATOR
+                </button>
+            </form>
+
+            <div class="stats-display">
+                <div class="stat-item">
+                    <div class="stat-value" id="onlineCount">1,247</div>
+                    <div class="stat-label">Online</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-value" id="questCount">342</div>
+                    <div class="stat-label">Quests</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-value" id="rewardCount">89K</div>
+                    <div class="stat-label">Rewards</div>
+                </div>
+            </div>
+
+            <div class="footer-links">
+                <a href="#" onclick="alert('Recovery protocol initiated...')">FORGOT ACCESS?</a>
+                <span style="margin: 0 15px; opacity: 0.5;">|</span>
+                <a href="#" onclick="alert('Guest mode activated...')">GUEST MODE</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Insert coin prompt -->
+    <div class="insert-coin">
+        ▸ PRESS START ◂
+    </div>
+
+    <script>
+        // Create starfield
+        function createStarfield() {
+            const stars = document.getElementById('stars');
+            for (let i = 0; i < 150; i++) {
+                const star = document.createElement('div');
+                star.className = 'star';
+                star.style.width = Math.random() * 3 + 1 + 'px';
+                star.style.height = star.style.width;
+                star.style.left = Math.random() * 100 + '%';
+                star.style.top = Math.random() * 100 + '%';
+                star.style.animationDelay = Math.random() * 3 + 's';
+                stars.appendChild(star);
+            }
+        }
+        createStarfield();
+
+        // Create floating particles
+        function createParticles() {
+            const container = document.getElementById('particles');
+            for (let i = 0; i < 30; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'particle';
+                particle.style.left = Math.random() * 100 + '%';
+                particle.style.animationDelay = Math.random() * 15 + 's';
+                particle.style.animationDuration = (Math.random() * 10 + 10) + 's';
+                
+                // Random colors
+                const colors = ['var(--neon-cyan)', 'var(--neon-pink)', 'var(--neon-purple)'];
+                const color = colors[Math.floor(Math.random() * colors.length)];
+                particle.style.background = color;
+                particle.style.boxShadow = `0 0 10px ${color}`;
+                
+                container.appendChild(particle);
+            }
+        }
+        createParticles();
+
+        // Animate stats
+        function animateStats() {
+            const stats = [
+                { id: 'onlineCount', target: 1247, suffix: '' },
+                { id: 'questCount', target: 342, suffix: '' },
+                { id: 'rewardCount', target: 89, suffix: 'K' }
+            ];
+
+            stats.forEach(stat => {
+                let current = 0;
+                const element = document.getElementById(stat.id);
+                const interval = setInterval(() => {
+                    current += Math.ceil(stat.target / 50);
+                    if (current >= stat.target) {
+                        current = stat.target;
+                        clearInterval(interval);
+                    }
+                    element.textContent = current.toLocaleString() + stat.suffix;
+                }, 30);
+            });
+        }
+        animateStats();
+
+        // Form submission
+        document.getElementById('loginForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const btn = this.querySelector('.neon-btn');
+            const loadingBar = document.getElementById('loadingBar');
+            const originalText = btn.textContent;
+            
+            btn.textContent = '▸ CONNECTING...';
+            btn.disabled = true;
+            loadingBar.classList.add('active');
+            
+            // Simulate login
+            setTimeout(() => {
+                btn.textContent = '✓ ACCESS GRANTED';
+                btn.style.background = 'linear-gradient(135deg, #00ff00, #00aa00)';
+                
+                setTimeout(() => {
+                    alert('🎮 SYSTEM ONLINE! Redirecting to Quest Terminal...');
+                    // window.location.href = 'bounty-board.html';
+                }, 1000);
+            }, 2000);
+        });
+
+        function showRegister() {
+            alert('🎮 NEW OPERATOR REGISTRATION\n\nInitialize your cyber profile and join the quest network!\n\n(Registration interface loading...)');
+        }
+
+        // Keyboard shortcuts
+        document.addEventListener('keydown', function(e) {
+            // Only trigger if not already in an input field
+            if ((e.key === 's' || e.key === 'S') && document.activeElement.tagName !== 'INPUT') {
+                document.querySelector('.cyber-input').focus();
+            }
+        });
+
+        // Add sound effect placeholders
+        function playSound(type) {
+            console.log('🔊 Sound:', type);
+        }
+
+        document.querySelectorAll('.cyber-input').forEach(input => {
+            input.addEventListener('focus', () => playSound('select'));
+            input.addEventListener('input', () => playSound('type'));
+        });
+
+        // Glitch effect on logo
+        setInterval(() => {
+            const logo = document.querySelector('.logo-text');
+            if (Math.random() > 0.95) {
+                logo.style.animation = 'none';
+                setTimeout(() => {
+                    logo.style.animation = 'gradientShift 3s ease infinite';
+                }, 100);
+            }
+        }, 3000);
+    </script>
+</body>
+</html>
