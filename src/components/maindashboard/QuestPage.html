@@ -3,10 +3,10 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>YGG | Quest Board</title>
+    <title>AEL | Quest Board</title>
 
     <link
-      href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Orbitron:wght@400;700;900&display=swap"
       rel="stylesheet"
     />
 
@@ -31,16 +31,26 @@
         height: 100vh;
       }
 
-      /* ===== SIDEBAR ===== */
+      /* ====== SIDEBAR ====== */
       .sidebar {
         width: 260px;
         background: linear-gradient(180deg, #ff8c00, #ff2fa1, #00c8ff);
         padding: 20px;
+        display: flex;
+        flex-direction: column;
       }
 
       .logo {
         font-size: 1.3rem;
         margin-bottom: 30px;
+      }
+
+      .profile {
+        background: rgba(0, 0, 0, 0.35);
+        padding: 15px;
+        border-radius: 6px;
+        font-size: 0.55rem;
+        margin-bottom: 20px;
       }
 
       .nav a {
@@ -52,13 +62,30 @@
         color: #fff;
         border-radius: 4px;
         background: rgba(0, 0, 0, 0.25);
+        transition: 0.2s;
       }
 
-      .nav a.active,
       .nav a:hover {
-        background: rgba(0, 0, 0, 0.55);
+        background: rgba(0, 0, 0, 0.5);
       }
 
+      .gradient-btn {
+        display: block;
+        padding: 12px;
+        margin-bottom: 10px;
+        font-size: 0.55rem;
+        text-decoration: none;
+        color: #fff;
+        border-radius: 6px;
+        background: linear-gradient(135deg, #ff00ff, #ff5a5a);
+        box-shadow: 0 0 15px rgba(255, 0, 255, 0.4);
+        transition: 0.25s;
+      }
+
+      .gradient-btn:hover {
+        background: linear-gradient(135deg, #00ffff, #ff00ff);
+        box-shadow: 0 0 25px rgba(255, 0, 255, 0.7);
+      }
       /* ===== MAIN ===== */
       .main {
         flex: 1;
@@ -163,13 +190,35 @@
       <aside class="sidebar">
         <div class="logo">🎮 AEL</div>
 
+        <div class="profile">
+          USER: PLAYER 1<br /><br />
+          LEVEL: 1<br /><br />
+          XP: 0 / 100
+        </div>
+
         <nav class="nav">
           <a href="MainDashboard.html">HOME</a>
-          <a href="QuestPage.html" class="active">QUEST BOARD</a>
+          <a href="QuestPage.html">QUESTS</a>
           <a href="#">CAMPAIGNS</a>
           <a href="#">REFERRALS</a>
           <a href="#">REWARDS</a>
         </nav>
+        <br />
+        <!-- Admin / Quest Management Navigation -->
+        <div class="nav-section">
+          <h4>Quest Management</h4>
+          <nav class="nav">
+            <a href="ManageQuest.html">🛠️ Manage Quest</a>
+            <a href="QuestStats.html">📊 Quest Stats</a>
+          </nav>
+        </div>
+        <br />
+        <div class="nav-section">
+          <h4>User Management</h4>
+          <nav class="nav">
+            <a href="ManageUsers.html">🛠️ Manage Users</a>
+          </nav>
+        </div>
       </aside>
 
       <!-- MAIN -->
@@ -188,8 +237,8 @@
                 <div class="stat-label">EXP</div>
               </div>
               <div class="stat-box">
-                <div class="stat-value">+30</div>
-                <div class="stat-label">POINTS</div>
+                <div class="stat-value">+30🪙</div>
+                <div class="stat-label">GOLD</div>
               </div>
             </div>
 
@@ -202,51 +251,6 @@
             </div>
           </div>
 
-          <!-- QUEST CARD -->
-          <div class="quest-card">
-            <div class="quest-stats">
-              <div class="stat-box">
-                <div class="stat-value">+200</div>
-                <div class="stat-label">EXP</div>
-              </div>
-              <div class="stat-box">
-                <div class="stat-value">+40</div>
-                <div class="stat-label">POINTS</div>
-              </div>
-            </div>
-
-            <div class="quest-info">
-              <div class="quest-title">Social Engagement</div>
-              <div class="quest-desc">
-                Participate in approved social activities that help strengthen
-                the community.
-              </div>
-            </div>
-          </div>
-
-          <!-- QUEST CARD -->
-          <div class="quest-card">
-            <div class="quest-stats">
-              <div class="stat-box">
-                <div class="stat-value">+300</div>
-                <div class="stat-label">EXP</div>
-              </div>
-              <div class="stat-box">
-                <div class="stat-value">+60</div>
-                <div class="stat-label">POINTS</div>
-              </div>
-            </div>
-
-            <div class="quest-info">
-              <div class="quest-title">Content Contribution</div>
-              <div class="quest-desc">
-                Create and share original content related to AEL initiatives and
-                campaigns.
-              </div>
-            </div>
-          </div>
-
-          <!-- QUEST CARD -->
           <div class="quest-card">
             <div class="quest-stats">
               <div class="stat-box">
@@ -254,8 +258,8 @@
                 <div class="stat-label">EXP</div>
               </div>
               <div class="stat-box">
-                <div class="stat-value">+30</div>
-                <div class="stat-label">POINTS</div>
+                <div class="stat-value">+30🪙</div>
+                <div class="stat-label">GOLD</div>
               </div>
             </div>
 
@@ -268,51 +272,6 @@
             </div>
           </div>
 
-          <!-- QUEST CARD -->
-          <div class="quest-card">
-            <div class="quest-stats">
-              <div class="stat-box">
-                <div class="stat-value">+200</div>
-                <div class="stat-label">EXP</div>
-              </div>
-              <div class="stat-box">
-                <div class="stat-value">+40</div>
-                <div class="stat-label">POINTS</div>
-              </div>
-            </div>
-
-            <div class="quest-info">
-              <div class="quest-title">Social Engagement</div>
-              <div class="quest-desc">
-                Participate in approved social activities that help strengthen
-                the community.
-              </div>
-            </div>
-          </div>
-
-          <!-- QUEST CARD -->
-          <div class="quest-card">
-            <div class="quest-stats">
-              <div class="stat-box">
-                <div class="stat-value">+300</div>
-                <div class="stat-label">EXP</div>
-              </div>
-              <div class="stat-box">
-                <div class="stat-value">+60</div>
-                <div class="stat-label">POINTS</div>
-              </div>
-            </div>
-
-            <div class="quest-info">
-              <div class="quest-title">Content Contribution</div>
-              <div class="quest-desc">
-                Create and share original content related to AEL initiatives and
-                campaigns.
-              </div>
-            </div>
-          </div>
-
-          <!-- QUEST CARD -->
           <div class="quest-card">
             <div class="quest-stats">
               <div class="stat-box">
@@ -320,8 +279,128 @@
                 <div class="stat-label">EXP</div>
               </div>
               <div class="stat-box">
-                <div class="stat-value">+30</div>
-                <div class="stat-label">POINTS</div>
+                <div class="stat-value">+30🪙</div>
+                <div class="stat-label">GOLD</div>
+              </div>
+            </div>
+
+            <div class="quest-info">
+              <div class="quest-title">Community Onboarding</div>
+              <div class="quest-desc">
+                Join official AEL community spaces and learn the fundamentals of
+                the ecosystem.
+              </div>
+            </div>
+          </div>
+          <div class="quest-card">
+            <div class="quest-stats">
+              <div class="stat-box">
+                <div class="stat-value">+150</div>
+                <div class="stat-label">EXP</div>
+              </div>
+              <div class="stat-box">
+                <div class="stat-value">+30🪙</div>
+                <div class="stat-label">GOLD</div>
+              </div>
+            </div>
+
+            <div class="quest-info">
+              <div class="quest-title">Community Onboarding</div>
+              <div class="quest-desc">
+                Join official AEL community spaces and learn the fundamentals of
+                the ecosystem.
+              </div>
+            </div>
+          </div>
+          <div class="quest-card">
+            <div class="quest-stats">
+              <div class="stat-box">
+                <div class="stat-value">+150</div>
+                <div class="stat-label">EXP</div>
+              </div>
+              <div class="stat-box">
+                <div class="stat-value">+30🪙</div>
+                <div class="stat-label">GOLD</div>
+              </div>
+            </div>
+
+            <div class="quest-info">
+              <div class="quest-title">Community Onboarding</div>
+              <div class="quest-desc">
+                Join official AEL community spaces and learn the fundamentals of
+                the ecosystem.
+              </div>
+            </div>
+          </div>
+          <div class="quest-card">
+            <div class="quest-stats">
+              <div class="stat-box">
+                <div class="stat-value">+150</div>
+                <div class="stat-label">EXP</div>
+              </div>
+              <div class="stat-box">
+                <div class="stat-value">+30🪙</div>
+                <div class="stat-label">GOLD</div>
+              </div>
+            </div>
+
+            <div class="quest-info">
+              <div class="quest-title">Community Onboarding</div>
+              <div class="quest-desc">
+                Join official AEL community spaces and learn the fundamentals of
+                the ecosystem.
+              </div>
+            </div>
+          </div>
+          <div class="quest-card">
+            <div class="quest-stats">
+              <div class="stat-box">
+                <div class="stat-value">+150</div>
+                <div class="stat-label">EXP</div>
+              </div>
+              <div class="stat-box">
+                <div class="stat-value">+30🪙</div>
+                <div class="stat-label">GOLD</div>
+              </div>
+            </div>
+
+            <div class="quest-info">
+              <div class="quest-title">Community Onboarding</div>
+              <div class="quest-desc">
+                Join official AEL community spaces and learn the fundamentals of
+                the ecosystem.
+              </div>
+            </div>
+          </div>
+          <div class="quest-card">
+            <div class="quest-stats">
+              <div class="stat-box">
+                <div class="stat-value">+150</div>
+                <div class="stat-label">EXP</div>
+              </div>
+              <div class="stat-box">
+                <div class="stat-value">+30🪙</div>
+                <div class="stat-label">GOLD</div>
+              </div>
+            </div>
+
+            <div class="quest-info">
+              <div class="quest-title">Community Onboarding</div>
+              <div class="quest-desc">
+                Join official AEL community spaces and learn the fundamentals of
+                the ecosystem.
+              </div>
+            </div>
+          </div>
+          <div class="quest-card">
+            <div class="quest-stats">
+              <div class="stat-box">
+                <div class="stat-value">+150</div>
+                <div class="stat-label">EXP</div>
+              </div>
+              <div class="stat-box">
+                <div class="stat-value">+30🪙</div>
+                <div class="stat-label">GOLD</div>
               </div>
             </div>
 
@@ -334,49 +413,7 @@
             </div>
           </div>
 
-          <!-- QUEST CARD -->
-          <div class="quest-card">
-            <div class="quest-stats">
-              <div class="stat-box">
-                <div class="stat-value">+250</div>
-                <div class="stat-label">EXP</div>
-              </div>
-              <div class="stat-box">
-                <div class="stat-value">+45</div>
-                <div class="stat-label">POINTS</div>
-              </div>
-            </div>
-
-            <div class="quest-info">
-              <div class="quest-title">Social Engagement</div>
-              <div class="quest-desc">
-                Participate in approved social activities that help strengthen
-                the community.
-              </div>
-            </div>
-          </div>
-
-          <!-- QUEST CARD -->
-          <div class="quest-card">
-            <div class="quest-stats">
-              <div class="stat-box">
-                <div class="stat-value">+300</div>
-                <div class="stat-label">EXP</div>
-              </div>
-              <div class="stat-box">
-                <div class="stat-value">+60</div>
-                <div class="stat-label">POINTS</div>
-              </div>
-            </div>
-
-            <div class="quest-info">
-              <div class="quest-title">Content Contribution</div>
-              <div class="quest-desc">
-                Create and share original content related to AEL initiatives and
-                campaigns.
-              </div>
-            </div>
-          </div>
+          <!-- Repeat other quest cards as needed -->
         </section>
       </main>
     </div>

@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Exakt Leveling Arcade</title>
+    <title>Create Quest - YGG Arcade</title>
 
     <link
       href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Orbitron:wght@400;700;900&display=swap"
@@ -77,75 +77,45 @@
         background: #0b233d;
       }
 
-      /* ====== HERO ====== */
-      .hero {
-        position: relative;
-        height: 300px;
-        background:
-          linear-gradient(180deg, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.9)),
-          linear-gradient(135deg, #ff00ff, #00ffff);
-        border-radius: 12px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        text-align: center;
-        box-shadow: 0 0 40px rgba(255, 0, 255, 0.4);
-        margin-bottom: 30px;
-      }
-
-      .hero h1 {
-        font-size: 1.8rem;
+      h1 {
         color: #00ffff;
         text-shadow:
           0 0 15px #00ffff,
           0 0 40px #ff00ff;
-      }
-
-      .hero span {
-        display: block;
-        font-size: 0.7rem;
-        margin-top: 15px;
-        color: #fff;
-      }
-
-      /* ====== TAG BAR ====== */
-      .tags {
-        display: flex;
-        justify-content: space-between;
         margin-bottom: 25px;
+        font-size: 1.5rem;
       }
 
-      .tag {
-        padding: 10px 20px;
-        font-size: 0.6rem;
-        border-radius: 4px;
-        background: linear-gradient(90deg, #00ffff, #ff00ff);
-        color: #000;
-        box-shadow: 0 0 15px rgba(0, 255, 255, 0.6);
+      /* ====== FORM ====== */
+      form {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+        max-width: 500px;
       }
 
-      /* ====== MENU CARDS ====== */
-      .cards {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-        gap: 20px;
+      input[type="text"],
+      input[type="number"],
+      textarea {
+        padding: 10px;
+        border: none;
+        border-radius: 6px;
+        font-family: "Press Start 2P", monospace;
       }
 
-      .card {
-        background: linear-gradient(180deg, #111, #000);
-        border: 2px solid #00ffff;
-        border-radius: 10px;
-        padding: 25px;
-        text-align: center;
-        font-size: 0.6rem;
-        box-shadow: 0 0 20px rgba(0, 255, 255, 0.3);
+      button {
+        background: linear-gradient(90deg, #ff8c00, #ff2fa1);
+        border: none;
+        padding: 12px;
+        color: #fff;
+        font-weight: bold;
+        cursor: pointer;
+        border-radius: 6px;
         transition: 0.25s;
       }
 
-      .card:hover {
-        transform: translateY(-8px);
-        box-shadow: 0 0 35px rgba(255, 0, 255, 0.7);
-        border-color: #ff00ff;
+      button:hover {
+        background: linear-gradient(90deg, #ff2fa1, #00c8ff);
       }
 
       /* ====== SCANLINES ====== */
@@ -172,9 +142,9 @@
         <div class="logo">🎮 AEL</div>
 
         <div class="profile">
-          USER: PLAYER 1<br /><br />
-          LEVEL: 1<br /><br />
-          XP: 0 / 100
+          USER: ADMIN<br /><br />
+          LEVEL: 99<br /><br />
+          XP: 999 / 1000
         </div>
 
         <nav class="nav">
@@ -184,8 +154,9 @@
           <a href="#">REFERRALS</a>
           <a href="#">REWARDS</a>
         </nav>
+
         <br />
-        <!-- Admin / Quest Management Navigation -->
+        <!-- Quest Management -->
         <div class="nav-section">
           <h4>Quest Management</h4>
           <nav class="nav">
@@ -193,7 +164,9 @@
             <a href="QuestStats.html">📊 Quest Stats</a>
           </nav>
         </div>
+
         <br />
+        <!-- User Management -->
         <div class="nav-section">
           <h4>User Management</h4>
           <nav class="nav">
@@ -202,26 +175,49 @@
         </div>
       </aside>
 
-      <!-- MAIN DASHBOARD -->
+      <!-- MAIN CONTENT -->
       <main class="main">
-        <section class="hero">
-          <div>
-            <h1>EXAKT LEVELING COMMUNITY QUESTING</h1>
-            <span>#TOGETHERWEPLAY</span>
-          </div>
-        </section>
+        <h1>➕ Create New Quest</h1>
 
-        <div class="tags">
-          <div class="tag">#TOGETHERWEPLAY</div>
-          <div class="tag">EXAKT LEVELING GUILD GAMES</div>
-        </div>
+        <form action="#" method="POST">
+          <label for="questName">Quest Name</label>
+          <input
+            type="text"
+            id="questName"
+            name="questName"
+            placeholder="Enter quest name"
+            required
+          />
 
-        <section class="cards">
-          <div class="card">START QUEST</div>
-          <div class="card">HIGH SCORES</div>
-          <div class="card">OPTIONS</div>
-          <div class="card">CREDITS</div>
-        </section>
+          <label for="questDesc">Description</label>
+          <textarea
+            id="questDesc"
+            name="questDesc"
+            rows="5"
+            placeholder="Enter quest description"
+            required
+          ></textarea>
+
+          <label for="exp">EXP</label>
+          <input
+            type="number"
+            id="exp"
+            name="exp"
+            placeholder="e.g., 150"
+            required
+          />
+
+          <label for="gold">GOLD</label>
+          <input
+            type="number"
+            id="gold"
+            name="gold"
+            placeholder="e.g., 30"
+            required
+          />
+
+          <button type="submit">Create Quest</button>
+        </form>
       </main>
     </div>
   </body>
