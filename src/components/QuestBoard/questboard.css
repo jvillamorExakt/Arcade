@@ -60,12 +60,14 @@
         margin-bottom: 8px;
         color: #00ffff;
         text-shadow: 0 0 10px #00ffff;
+        padding: 20px;
       }
 
       .page-subtitle {
         font-size: 0.55rem;
         color: #cbd5e1;
         margin-bottom: 30px;
+        padding: 20px;
       }
 
       /* ===== QUEST GRID ===== */
@@ -73,6 +75,7 @@
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(420px, 1fr));
         gap: 26px;
+        padding: 20px;
       }
 
       /* ===== QUEST CARD ===== */
