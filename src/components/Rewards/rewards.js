@@ -6,7 +6,7 @@ function initManageRewards() {
     currentLevel: 5,
     currentEXP: 750,
     nextLevelEXP: 1000,
-    currentPoints: 500, // Test with 0 or higher
+    currentPoints: 2000, // Test with 0 or higher
   };
 
   const userLevelElem = document.getElementById("user-level");

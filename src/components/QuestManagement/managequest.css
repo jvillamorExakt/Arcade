@@ -99,29 +99,28 @@ h1 {
 }
 
 /* Quest Cards */
+/* Quest Cards Container */
 .quest-cards {
   display: flex;
-  flex-direction: column; /* 👈 TOP TO BOTTOM */
+  flex-direction: column; /* top to bottom */
   gap: 20px;
   padding: 20px;
 }
 
-
+/* Individual Quest Card */
 .quest-card {
   background: linear-gradient(180deg, #111, #000);
   border: 2px solid #00ffff;
   border-radius: 10px;
   padding: 24px;
   font-size: 0.6rem;
-
-  text-align: center;          /* 👈 CENTER EVERYTHING */
-  display: block;              /* 👈 IMPORTANT */
-  
+  text-align: center; /* center everything */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   box-shadow: 0 0 20px rgba(0, 255, 255, 0.3);
   transition: 0.25s;
 }
-
-
 
 .quest-card:hover {
   transform: translateY(-6px);
@@ -129,6 +128,7 @@ h1 {
   border-color: #ff00ff;
 }
 
+/* Quest Title and Description */
 .quest-title {
   font-size: 0.65rem;
   font-weight: bold;
@@ -139,47 +139,61 @@ h1 {
   font-size: 0.55rem;
   margin-bottom: 14px;
   color: #cbd5e1;
+  text-align: center;
 }
 
+/* Quest Stats: EXP and GOLD */
 .quest-stats {
-  display: flex !important;
-  flex-direction: row !important;   /* 👈 FORCE ROW */
-  justify-content: center;
-  align-items: flex-start;
- gap: 12px !important;     
+  display: flex;
+  flex-direction: row;
+  justify-content: center; /* horizontally center the stats */
+  align-items: center; /* vertically center the stats */
+  gap: 12px; /* retain previous gap */
+  margin-bottom: 14px; /* spacing below stats */
 }
 
 .quest-stats .stat-box {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  width: auto !important;  
-   margin: 0 !important;          /* 👈 REMOVE EXTRA SPACE */         /* 👈 KILLS vertical stacking */
+  align-items: center; /* center value above label */
+  justify-content: center; /* vertical centering */
+  margin: 0;
+  padding: 0;
 }
-
-
 
 .stat-value {
   font-weight: bold;
-  padding: 5px; /* Added padding to all sides */
-  margin: 3px; /* Added margin to all sides */
+  padding: 5px; /* retain original padding */
+  margin: 3px; /* retain original margin */
+  text-align: center;
 }
+
+.stat-label {
+  font-size: 0.55rem;
+  color: #cbd5e1;
+  text-align: center;
+}
+
+/* Quest Action Buttons */
 .quest-actions {
   display: flex;
   justify-content: center;
   gap: 10px;
+  flex-wrap: wrap; /* wrap if buttons overflow */
 }
 
 .quest-actions a {
   display: inline-block;
-  margin: 5px; /* Already has margin on all sides */
-  padding: 5px 8px; /* top/bottom left/right */
+  margin: 5px;
+  padding: 5px 8px; /* retain original size */
   background: linear-gradient(90deg, #ff8c00, #ff2fa1);
   border-radius: 4px;
   font-size: 0.5rem;
+  font-weight: bold;
   text-decoration: none;
   color: #fff;
   transition: 0.25s;
+  text-align: center;
 }
 
 .quest-actions a:hover {
@@ -302,4 +316,3 @@ h1 {
   background: rgba(255, 255, 255, 0.95);
   color: #000;
 }
-
