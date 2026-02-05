@@ -3,9 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
     <title>Exakt Leveling Arcade</title>
-
 
     <link
       href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Orbitron:wght@400;700;900&display=swap"
@@ -17,11 +15,17 @@
     <link rel="stylesheet" href="../QuestManagement/managequest.css">
     <link rel="stylesheet" href="../QuestManagement/queststats.css">
 
+    <!-- load all css dito kasi ito main dash -->
+    <link rel="stylesheet" href="maindashboard.css" />
+    <link rel="stylesheet" href="../QuestBoard/questboard.css" />
+    <link rel="stylesheet" href="../QuestManagement/managequest.css" />
+    <link rel="stylesheet" href="../QuestManagement/queststats.css" />
+    <link rel="stylesheet" href="../Rewards/rewards.css" />
     <style>
-        #main-content {
-            transition: opacity 0.3s ease;
-            width: 100%;
-        }
+      #main-content {
+        transition: opacity 0.3s ease;
+        width: 100%;
+      }
     </style>
   </head>
 
@@ -38,11 +42,11 @@
         </div>
 
         <nav class="nav">
-            <a href="#home">HOME</a>
-            <a href="#quests" class="active">QUESTS</a>
-            <a href="#campaigns">CAMPAIGNS</a>
-            <a href="#referrals">REFERRALS</a>
-            <a href="#rewards">REWARDS</a>
+          <a href="#home">HOME</a>
+          <a href="#quests" class="active">QUESTS</a>
+          <a href="#campaigns">CAMPAIGNS</a>
+          <a href="#referrals">REFERRALS</a>
+          <a href="#rewards">REWARDS</a>
         </nav>
         <br />
         <!-- Admin / Quest Management Navigation -->
@@ -62,10 +66,10 @@
         </div>
       </aside>
 
-      <!-- MAIN CONTENT AREA (will be replaced by router) -->
+      <!-- MAIN CONTENT -->
       <div id="main-content">
-        <!-- Default/Home content -->
         <main class="main">
+          <!-- HERO -->
           <section class="hero">
             <div>
               <h1>EXAKT LEVELING COMMUNITY QUESTING</h1>
@@ -73,20 +77,78 @@
             </div>
           </section>
 
+          <!-- TAGS -->
           <div class="tags">
             <div class="tag">#TOGETHERWEPLAY</div>
             <div class="tag">EXAKT LEVELING GUILD GAMES</div>
           </div>
 
-          <section class="cards">
-            <div class="card">START QUEST</div>
-            <div class="card">HIGH SCORES</div>
-            <div class="card">OPTIONS</div>
-            <div class="card">CREDITS</div>
+          <!-- DASHBOARD -->
+          <section class="dashboard-grid">
+            <!-- LEFT SIDE -->
+            <div class="left-panel">
+              <!-- QUEST STATS -->
+              <div class="panel">
+                <h2>QUEST STATS</h2>
+
+                <div class="stats-grid">
+                  <div class="stat-box completed">
+                    <span class="stat-icon">🏆</span>
+                    <span class="stat-value">12</span>
+                    <span class="stat-label">COMPLETED</span>
+                  </div>
+
+                  <div class="stat-box active">
+                    <span class="stat-icon">⚔️</span>
+                    <span class="stat-value">3</span>
+                    <span class="stat-label">ACTIVE</span>
+                  </div>
+
+                  <div class="stat-box pending">
+                    <span class="stat-icon">⏳</span>
+                    <span class="stat-value">5</span>
+                    <span class="stat-label">PENDING</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- QUEST PENDING -->
+              <div class="panel">
+                <h2>QUEST PENDING</h2>
+
+                <div class="pending-item">
+                  <span>🧭 Daily Login Quest</span>
+                  <button>CLAIM</button>
+                </div>
+
+                <div class="pending-item">
+                  <span>⚔️ Win 3 Matches</span>
+                  <button>CLAIM</button>
+                </div>
+
+                <div class="pending-item">
+                  <span>📦 Collect Reward</span>
+                  <button>CLAIM</button>
+                </div>
+              </div>
+            </div>
+
+            <!-- RIGHT SIDE -->
+            <aside class="leaderboard">
+              <h2>LEADERBOARD</h2>
+              <ul>
+                <li><span>#1</span> PLAYERX <em>5000 XP</em></li>
+                <li><span>#2</span> PLAYERY <em>4200 XP</em></li>
+                <li><span>#3</span> PLAYERZ <em>3900 XP</em></li>
+                <li><span>#4</span> PLAYER1 <em>3500 XP</em></li>
+                <li><span>#5</span> PLAYER2 <em>3000 XP</em></li>
+              </ul>
+            </aside>
           </section>
         </main>
       </div>
     </div>
+
     <script src="router.js"></script>
   </body>
 </html>

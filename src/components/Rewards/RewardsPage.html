@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AEL | Rewards</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Orbitron:wght@400;700;900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="rewards.css" />
+  </head>
+  <body>
+    <div class="app">
+      <main class="main">
+        <br />
+        <div class="page-title">REWARDS</div>
+        <div class="page-subtitle">
+          Redeem your points for exciting rewards below.
+        </div>
+
+        <!-- User Status Panel -->
+        <div class="user-status">
+          <div class="user-icon">
+            <img src="" alt="User Avatar" />
+          </div>
+          <div class="status-boxes">
+            <div class="status-box level-exp-box">
+              <div class="status-value" id="user-level">1</div>
+              <div class="status-label">LEVEL</div>
+              <div class="status-subvalue" id="user-exp-sub">0 / 0 EXP</div>
+            </div>
+            <div class="status-box">
+              <div id="user-points" class="status-value">500</div>
+              <div class="status-label">POINTS</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Rewards Grid -->
+        <section class="reward-grid">
+          <div class="reward-card" data-points="500">
+            <div class="reward-points">
+              <div class="points-box">
+                <div class="points-value">500✨</div>
+                <div class="points-label">POINTS</div>
+              </div>
+            </div>
+            <div class="reward-info">
+              <div class="reward-title">Exclusive Avatar Skin</div>
+              <div class="reward-desc">
+                Unlock a unique avatar skin to showcase your achievements.
+              </div>
+              <button class="redeem-btn">Redeem</button>
+            </div>
+          </div>
+
+          <div class="reward-card" data-points="1000">
+            <div class="reward-points">
+              <div class="points-box">
+                <div class="points-value">1000✨</div>
+                <div class="points-label">POINTS</div>
+              </div>
+            </div>
+            <div class="reward-info">
+              <div class="reward-title">VIP Community Badge</div>
+              <div class="reward-desc">
+                Earn a special badge that highlights your top status.
+              </div>
+              <button class="redeem-btn">Redeem</button>
+            </div>
+          </div>
+
+          <div class="reward-card" data-points="1500">
+            <div class="reward-points">
+              <div class="points-box">
+                <div class="points-value">1500✨</div>
+                <div class="points-label">POINTS</div>
+              </div>
+            </div>
+            <div class="reward-info">
+              <div class="reward-title">Merchandise Voucher</div>
+              <div class="reward-desc">
+                Redeem points for official merchandise from the AEL store.
+              </div>
+              <button class="redeem-btn">Redeem</button>
+            </div>
+          </div>
+
+          <div class="reward-card" data-points="2000">
+            <div class="reward-points">
+              <div class="points-box">
+                <div class="points-value">2000✨</div>
+                <div class="points-label">POINTS</div>
+              </div>
+            </div>
+            <div class="reward-info">
+              <div class="reward-title">Game Access Pass</div>
+              <div class="reward-desc">
+                Get early access to upcoming games and features.
+              </div>
+              <button class="redeem-btn">Redeem</button>
+            </div>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <script src="rewards.js"></script>
+  </body>
+</html>
