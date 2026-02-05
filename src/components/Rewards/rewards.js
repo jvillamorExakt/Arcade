@@ -1,4 +1,6 @@
-document.addEventListener("DOMContentLoaded", () => {
+function initManageRewards() {
+  console.log("initManageRewards called!");
+
   const user = {
     avatar: "avatar.png",
     currentLevel: 5,
@@ -12,6 +14,11 @@ document.addEventListener("DOMContentLoaded", () => {
   const userPointsElem = document.getElementById("user-points");
   const userAvatar = document.querySelector(".user-icon img");
 
+  if (!userLevelElem || !userExpElem || !userPointsElem || !userAvatar) {
+    console.log("Rewards elements not found - not on rewards page");
+    return;
+  }
+
   userLevelElem.textContent = user.currentLevel;
   userExpElem.textContent = `${user.currentEXP} / ${user.nextLevelEXP} EXP`;
   userPointsElem.textContent = user.currentPoints;
@@ -24,7 +31,9 @@ document.addEventListener("DOMContentLoaded", () => {
       const requiredPoints = Number(card.dataset.points);
       const btn = card.querySelector(".redeem-btn");
 
-      // Check if user has enough points
+      if (!btn) return;
+
+      // Enable/disable button based on points
       if (user.currentPoints >= requiredPoints) {
         btn.disabled = false;
         btn.textContent = "Redeem";
@@ -48,4 +57,12 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   updateRewards();
+}
+
+// Initialize on DOM load
+document.addEventListener("DOMContentLoaded", initManageRewards);
+
+// Re-initialize when navigating via router
+window.addEventListener("hashchange", () => {
+  setTimeout(initManageRewards, 600); // Wait for router to load rewards content
 });

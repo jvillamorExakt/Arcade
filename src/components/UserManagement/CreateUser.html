@@ -9,279 +9,11 @@
       href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Orbitron:wght@400;700;900&display=swap"
       rel="stylesheet"
     />
-
-    <style>
-      * {
-        box-sizing: border-box;
-        margin: 0;
-        padding: 0;
-      }
-      body {
-        font-family: "Press Start 2P", cursive;
-        background: #0b233d;
-        color: #fff;
-        height: 100vh;
-        overflow: hidden;
-      }
-      .app {
-        display: flex;
-        height: 100vh;
-      }
-
-      /* Sidebar */
-      .sidebar {
-        width: 260px;
-        background: linear-gradient(180deg, #ff8c00, #ff2fa1, #00c8ff);
-        padding: 20px;
-        display: flex;
-        flex-direction: column;
-      }
-      .logo {
-        font-size: 1.3rem;
-        margin-bottom: 30px;
-      }
-      .profile {
-        background: rgba(0, 0, 0, 0.35);
-        padding: 15px;
-        border-radius: 6px;
-        font-size: 0.55rem;
-        margin-bottom: 20px;
-      }
-      .nav a {
-        display: block;
-        padding: 12px;
-        margin-bottom: 10px;
-        font-size: 0.55rem;
-        text-decoration: none;
-        color: #fff;
-        border-radius: 4px;
-        background: rgba(0, 0, 0, 0.25);
-        transition: 0.2s;
-      }
-      .nav a:hover {
-        background: rgba(0, 0, 0, 0.5);
-      }
-
-      /* Main Content */
-      .main {
-        flex: 1;
-        padding: 25px;
-        overflow-y: auto;
-        background: #0b233d;
-      }
-      h1 {
-        color: #00ffff;
-        text-shadow:
-          0 0 15px #00ffff,
-          0 0 40px #ff00ff;
-        margin-bottom: 25px;
-        font-size: 1.5rem;
-      }
-
-      /* Arcade Buttons */
-      .add-user-btn {
-        display: inline-block;
-        padding: 12px 20px;
-        background: linear-gradient(90deg, #ff8c00, #ff2fa1);
-        border-radius: 6px;
-        font-size: 0.6rem;
-        font-weight: bold;
-        color: #fff;
-        border: none;
-        cursor: pointer;
-        transition: 0.25s;
-        margin-bottom: 20px;
-      }
-      .add-user-btn:hover {
-        background: linear-gradient(90deg, #ff2fa1, #00c8ff);
-      }
-
-      /* User Cards */
-      .user-cards {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-        gap: 20px;
-      }
-      .user-card {
-        background: linear-gradient(180deg, #111, #000);
-        border: 2px solid #00ffff;
-        border-radius: 10px;
-        padding: 25px;
-        text-align: center;
-        font-size: 0.6rem;
-        box-shadow: 0 0 20px rgba(0, 255, 255, 0.3);
-        transition: 0.25s;
-      }
-      .user-card:hover {
-        transform: translateY(-6px);
-        box-shadow: 0 0 35px rgba(255, 0, 255, 0.7);
-        border-color: #ff00ff;
-      }
-      .user-title {
-        font-weight: bold;
-        margin-bottom: 8px;
-        font-size: 0.65rem;
-      }
-      .user-detail {
-        margin-bottom: 6px;
-        font-size: 0.55rem;
-      }
-      .user-actions a {
-        display: inline-block;
-        margin: 5px;
-        padding: 5px 8px;
-        background: linear-gradient(90deg, #ff8c00, #ff2fa1);
-        border-radius: 4px;
-        font-size: 0.5rem;
-        text-decoration: none;
-        color: #fff;
-        transition: 0.25s;
-      }
-      .user-actions a:hover {
-        background: linear-gradient(90deg, #ff2fa1, #00c8ff);
-      }
-
-      /* Modals */
-      .modal {
-        display: none;
-        position: fixed;
-        z-index: 1000;
-        left: 0;
-        top: 0;
-        width: 100%;
-        height: 100%;
-        background-color: rgba(0, 0, 0, 0.7);
-        backdrop-filter: blur(3px);
-      }
-      .modal-content {
-        background: linear-gradient(180deg, #111, #000);
-        margin: 10% auto;
-        padding: 30px;
-        border: 2px solid #00ffff;
-        border-radius: 12px;
-        width: 400px;
-        position: relative;
-        box-shadow: 0 0 35px rgba(0, 255, 255, 0.7);
-        text-align: center;
-      }
-      .modal-content h2 {
-        color: #00ffff;
-        text-shadow:
-          0 0 15px #00ffff,
-          0 0 40px #ff00ff;
-        margin-bottom: 20px;
-        font-size: 1rem;
-      }
-      .close {
-        position: absolute;
-        top: 10px;
-        right: 15px;
-        font-size: 1.2rem;
-        color: #ff00ff;
-        cursor: pointer;
-      }
-      form input,
-      form select {
-        width: 90%;
-        margin-bottom: 12px;
-        padding: 10px;
-        border: none;
-        border-radius: 6px;
-        font-family: "Press Start 2P", monospace;
-      }
-      form button {
-        width: 95%;
-        padding: 12px;
-        border: none;
-        border-radius: 6px;
-        font-family: "Press Start 2P", monospace;
-        font-weight: bold;
-        color: #fff;
-        cursor: pointer;
-        transition: 0.25s;
-        background: linear-gradient(90deg, #ff8c00, #ff2fa1);
-      }
-      form button:hover {
-        background: linear-gradient(90deg, #ff2fa1, #00c8ff);
-      }
-
-      /* Modal buttons for delete/confirm */
-      .modal-btn {
-        padding: 12px 20px;
-        border: none;
-        border-radius: 6px;
-        font-family: "Press Start 2P", monospace;
-        font-weight: bold;
-        color: #fff;
-        cursor: pointer;
-        transition: 0.25s;
-        background: linear-gradient(90deg, #ff8c00, #ff2fa1);
-        margin: 5px;
-      }
-      .modal-btn:hover {
-        background: linear-gradient(90deg, #ff2fa1, #00c8ff);
-      }
-
-      /* Danger button (delete) */
-      .danger-btn {
-        background: linear-gradient(90deg, #ff0000, #ff4f4f);
-      }
-      .danger-btn:hover {
-        background: linear-gradient(90deg, #ff4f4f, #ff0000);
-      }
-
-      /* Scanlines */
-      .scanlines::before {
-        content: "";
-        position: fixed;
-        inset: 0;
-        background: repeating-linear-gradient(
-          to bottom,
-          rgba(255, 255, 255, 0.03),
-          rgba(255, 255, 255, 0.03) 1px,
-          transparent 1px,
-          transparent 3px
-        );
-        pointer-events: none;
-      }
-    </style>
+    <link rel="stylesheet" href="user.css" />
   </head>
 
   <body class="scanlines">
     <div class="app">
-      <!-- Sidebar -->
-      <aside class="sidebar">
-        <div class="logo">🎮 AEL</div>
-        <div class="profile">
-          USER: ADMIN<br /><br />LEVEL: 99<br /><br />XP: 999 / 1000
-        </div>
-
-        <nav class="nav">
-          <a href="MainDashboard.html">HOME</a>
-          <a href="QuestPage.html">QUESTS</a>
-          <a href="#">CAMPAIGNS</a>
-          <a href="#">REFERRALS</a>
-          <a href="#">REWARDS</a>
-        </nav>
-
-        <br />
-        <div class="nav-section">
-          <h4>Quest Management</h4>
-          <nav class="nav">
-            <a href="ManageQuest.html">🛠️ Manage Quest</a>
-            <a href="QuestStats.html">📊 Quest Stats</a>
-          </nav>
-        </div>
-
-        <br />
-        <div class="nav-section">
-          <h4>User Management</h4>
-          <nav class="nav">
-            <a href="ManageUsers.html">🛠️ Manage Users</a>
-          </nav>
-        </div>
-      </aside>
-
       <!-- Main Content -->
       <main class="main">
         <h1>🛠️ Manage Users</h1>
@@ -292,7 +24,9 @@
             <div class="user-title">PLAYER1</div>
             <div class="user-detail">Email: player1@example.com</div>
             <div class="user-detail">Level: 5</div>
-            <div class="user-detail">Role: Player</div>
+            <div class="user-detail">Role: Member</div>
+            <div class="user-detail">Department: Development</div>
+            <div class="user-detail">Sub Department: Frontend</div>
             <div class="user-actions">
               <a href="#">✏️ Edit</a>
               <a href="#">🗑️ Delete</a>
@@ -303,7 +37,9 @@
             <div class="user-title">MODERATOR1</div>
             <div class="user-detail">Email: mod1@example.com</div>
             <div class="user-detail">Level: 20</div>
-            <div class="user-detail">Role: Moderator</div>
+            <div class="user-detail">Role: Quest Maker</div>
+            <div class="user-detail">Department: Marketing</div>
+            <div class="user-detail">Sub Department: SEO</div>
             <div class="user-actions">
               <a href="#">✏️ Edit</a>
               <a href="#">🗑️ Delete</a>
@@ -331,12 +67,33 @@
                 min="1"
                 required
               />
+
               <select id="role" required>
                 <option value="">Select Role</option>
-                <option value="player">Player</option>
-                <option value="moderator">Moderator</option>
-                <option value="admin">Admin</option>
+                <option value="member">Member</option>
+                <option value="questmaker">Quest Maker</option>
+                <option value="superadmin">Super Admin</option>
               </select>
+
+              <!-- Extra fields hidden by default -->
+              <div id="extraFields" style="display: none; margin-top: 10px">
+                <select id="department">
+                  <option value="">Select Department</option>
+                  <option value="design">Technical Department</option>
+                  <option value="development">QA Deparment</option>
+                  <option value="marketing">
+                    System Engineering Department
+                  </option>
+                </select>
+
+                <select id="subdepartment">
+                  <option value="">Select Sub Department</option>
+                  <option value="frontend">Web Developer</option>
+                  <option value="backend">System Engineer</option>
+                  <option value="qa">Quality Assurance</option>
+                </select>
+              </div>
+
               <button type="submit">Add User</button>
             </form>
           </div>
@@ -351,12 +108,32 @@
               <input type="text" id="editUsername" required />
               <input type="email" id="editEmail" required />
               <input type="number" id="editLevel" min="1" required />
+
               <select id="editRole" required>
                 <option value="">Select Role</option>
-                <option value="player">Player</option>
-                <option value="moderator">Moderator</option>
-                <option value="admin">Admin</option>
+                <option value="member">Member</option>
+                <option value="questmaker">Quest Maker</option>
+                <option value="superadmin">Super Admin</option>
               </select>
+
+              <div id="editExtraFields" style="display: none">
+                <select id="editDepartment">
+                  <option value="">Select Department</option>
+                  <option value="design">Technical Department</option>
+                  <option value="development">QA Deparment</option>
+                  <option value="marketing">
+                    System Engineering Department
+                  </option>
+                </select>
+
+                <select id="editSubdepartment">
+                  <option value="">Select Sub Department</option>
+                  <option value="frontend">Web Developer</option>
+                  <option value="backend">System Engineer</option>
+                  <option value="qa">Quality Assurance</option>
+                </select>
+              </div>
+
               <button type="submit">Update User</button>
             </form>
           </div>
@@ -378,116 +155,7 @@
         </div>
       </main>
     </div>
-
-    <script>
-      const addModal = document.getElementById("userModal");
-      const editModal = document.getElementById("editModal");
-      const deleteModal = document.getElementById("deleteModal");
-
-      const openAddBtn = document.getElementById("openModal");
-      const closeBtns = document.querySelectorAll(".modal .close");
-
-      let currentEditCard = null;
-      let currentDeleteCard = null;
-
-      // Open Add Modal
-      openAddBtn.onclick = () => (addModal.style.display = "block");
-
-      // Close modals
-      closeBtns.forEach(
-        (btn) =>
-          (btn.onclick = () => (btn.closest(".modal").style.display = "none")),
-      );
-      window.onclick = (e) => {
-        if (e.target.classList.contains("modal"))
-          e.target.style.display = "none";
-      };
-
-      // Add User
-      const addForm = document.getElementById("addUserForm");
-      addForm.addEventListener("submit", (e) => {
-        e.preventDefault();
-        const username = document.getElementById("username").value;
-        const email = document.getElementById("email").value;
-        const level = document.getElementById("level").value;
-        const role = document.getElementById("role").value;
-
-        const userCards = document.querySelector(".user-cards");
-        const newCard = document.createElement("div");
-        newCard.className = "user-card";
-        newCard.innerHTML = `
-          <div class="user-title">${username}</div>
-          <div class="user-detail">Email: ${email}</div>
-          <div class="user-detail">Level: ${level}</div>
-          <div class="user-detail">Role: ${role}</div>
-          <div class="user-actions">
-            <a href="#">✏️ Edit</a>
-            <a href="#">🗑️ Delete</a>
-          </div>
-        `;
-        userCards.appendChild(newCard);
-        addModal.style.display = "none";
-        addForm.reset();
-        attachCardEvents(newCard);
-      });
-
-      // Attach Edit/Delete events to a card
-      function attachCardEvents(card) {
-        const editBtn = card.querySelector(".user-actions a:nth-child(1)");
-        const delBtn = card.querySelector(".user-actions a:nth-child(2)");
-
-        editBtn.onclick = (e) => {
-          e.preventDefault();
-          currentEditCard = card;
-          document.getElementById("editUsername").value =
-            card.querySelector(".user-title").innerText;
-          document.getElementById("editEmail").value = card
-            .querySelector(".user-detail:nth-child(2)")
-            .innerText.replace("Email: ", "");
-          document.getElementById("editLevel").value = card
-            .querySelector(".user-detail:nth-child(3)")
-            .innerText.replace("Level: ", "");
-          document.getElementById("editRole").value = card
-            .querySelector(".user-detail:nth-child(4)")
-            .innerText.replace("Role: ", "");
-          editModal.style.display = "block";
-        };
-
-        delBtn.onclick = (e) => {
-          e.preventDefault();
-          currentDeleteCard = card;
-          document.getElementById("deleteUsername").innerText =
-            card.querySelector(".user-title").innerText;
-          deleteModal.style.display = "block";
-        };
-      }
-
-      // Attach events for existing cards
-      document.querySelectorAll(".user-card").forEach(attachCardEvents);
-
-      // Edit form submit
-      document
-        .getElementById("editUserForm")
-        .addEventListener("submit", (e) => {
-          e.preventDefault();
-          currentEditCard.querySelector(".user-title").innerText =
-            document.getElementById("editUsername").value;
-          currentEditCard.querySelector(".user-detail:nth-child(2)").innerText =
-            "Email: " + document.getElementById("editEmail").value;
-          currentEditCard.querySelector(".user-detail:nth-child(3)").innerText =
-            "Level: " + document.getElementById("editLevel").value;
-          currentEditCard.querySelector(".user-detail:nth-child(4)").innerText =
-            "Role: " + document.getElementById("editRole").value;
-          editModal.style.display = "none";
-        });
-
-      // Delete confirm
-      document.getElementById("confirmDelete").onclick = () => {
-        currentDeleteCard.remove();
-        deleteModal.style.display = "none";
-      };
-      document.getElementById("cancelDelete").onclick = () =>
-        (deleteModal.style.display = "none");
-    </script>
+    <script src="router.js"></script>
+    <script src="user.js"></script>
   </body>
 </html>
