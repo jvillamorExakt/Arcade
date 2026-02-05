@@ -40,6 +40,41 @@ body {
   margin-bottom: 20px;
 }
 
+.profile-text {
+  margin-bottom: 12px;
+}
+
+.xp-bar {
+  position: relative;
+  width: 100%;
+  height: 22px;
+  background: rgba(0, 0, 0, 0.5);
+  border: 2px solid #00ffff;
+  border-radius: 4px;
+  overflow: hidden;
+  margin-top: 8px;
+}
+
+.xp-fill {
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  background: linear-gradient(90deg, #00ffff, #00ff88);
+  transition: width 0.5s ease;
+  box-shadow: 0 0 10px rgba(0, 255, 255, 0.6);
+}
+
+.xp-text {
+  position: relative;
+  text-align: center;
+  line-height: 18px;
+  font-size: 0.45rem;
+  color: #fff;
+  text-shadow: 1px 1px 2px #000;
+  z-index: 1;
+}
+
 .nav a {
   display: block;
   padding: 12px;
@@ -49,6 +84,37 @@ body {
   color: #fff;
   border-radius: 4px;
   background: rgba(0, 0, 0, 0.25);
+}
+
+.nav a.active,
+.nav a:hover {
+  background: rgba(0, 0, 0, 0.55);
+}
+
+/* ===== SIDEBAR FOOTER (LOGOUT) ===== */
+.sidebar-footer {
+  margin-top: auto;
+  padding-top: 20px;
+}
+
+.logout-btn {
+  width: 100%;
+  padding: 12px;
+  font-family: "Press Start 2P", cursive;
+  font-size: 0.55rem;
+  background: rgba(255, 0, 0, 0.3);
+  color: #fff;
+  border: 2px solid rgba(255, 0, 0, 0.5);
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.logout-btn:hover {
+  background: rgba(255, 0, 0, 0.6);
+  border-color: #ff0000;
+  box-shadow: 0 0 15px rgba(255, 0, 0, 0.6);
+  transform: translateY(-2px);
 }
 
 /* ===== MAIN ===== */
