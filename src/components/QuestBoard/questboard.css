@@ -144,6 +144,114 @@
         color: #cbd5e1;
         line-height: 1.7;
       }
+      /* ===== QUEST TABS ===== */
+      .quest-tabs {
+        display: flex;
+        gap: 16px;
+        margin-bottom: 30px;
+        padding: 0 20px;
+        border-bottom: 2px solid rgba(0, 255, 255, 0.3);
+      }
+
+      .tab-btn {
+        background: transparent;
+        border: none;
+        color: #64748b;
+        font-family: "Press Start 2P", cursive;
+        font-size: 0.5rem;
+        padding: 16px 20px;
+        cursor: pointer;
+        position: relative;
+        transition: all 0.3s ease;
+        border-bottom: 3px solid transparent;
+        margin-bottom: -2px;
+      }
+
+      .tab-btn:hover {
+        color: #00ffff;
+        text-shadow: 0 0 8px #00ffff;
+      }
+
+      .tab-btn.active {
+        color: #00ffff;
+        text-shadow: 0 0 10px #00ffff;
+        border-bottom-color: #00ffff;
+        box-shadow: 0 2px 12px rgba(0, 255, 255, 0.4);
+      }
+
+      /* ===== TAB CONTENT ===== */
+      .tab-content {
+        display: none;
+      }
+
+      .tab-content.active {
+        display: block;
+        animation: fadeIn 0.3s ease;
+      }
+
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(10px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+/* ===== QUEST ACTIONS ===== */
+      .quest-actions {
+        display: flex;
+        gap: 10px;
+        margin-top: 18px;
+      }
+
+      .quest-btn {
+        font-family: "Press Start 2P", cursive;
+        font-size: 0.45rem;
+        padding: 10px 16px;
+        border: 2px solid;
+        border-radius: 6px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        text-transform: uppercase;
+      }
+
+      .quest-btn-primary {
+        background: #00ffff;
+        color: #0b233d;
+        border-color: #00ffff;
+      }
+
+      .quest-btn-primary:hover {
+        background: transparent;
+        color: #00ffff;
+        box-shadow: 0 0 15px rgba(0, 255, 255, 0.6);
+      }
+
+      .quest-btn-secondary {
+        background: transparent;
+        color: #cbd5e1;
+        border-color: #cbd5e1;
+      }
+
+      .quest-btn-secondary:hover {
+        color: #00ffff;
+        border-color: #00ffff;
+        box-shadow: 0 0 12px rgba(0, 255, 255, 0.4);
+      }
+
+      .quest-btn-success {
+        background: #00ff88;
+        color: #0b233d;
+        border-color: #00ff88;
+      }
+
+      .quest-btn-success:hover {
+        background: transparent;
+        color: #00ff88;
+        box-shadow: 0 0 15px rgba(0, 255, 136, 0.6);
+      }
 
 
 
