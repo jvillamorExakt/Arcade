@@ -1,0 +1,247 @@
+
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      body {
+        font-family: "Press Start 2P", cursive;
+        background: #0b233d;
+        color: #fff;
+        height: 100vh;
+        overflow: hidden;
+      }
+
+      .app {
+        display: flex;
+        height: 100vh;
+      }
+
+      /* Sidebar */
+      .sidebar {
+        width: 260px;
+        background: linear-gradient(180deg, #ff8c00, #ff2fa1, #00c8ff);
+        padding: 20px;
+        display: flex;
+        flex-direction: column;
+      }
+
+      .logo {
+        font-size: 1.3rem;
+        margin-bottom: 30px;
+      }
+
+      .profile {
+        background: rgba(0, 0, 0, 0.35);
+        padding: 15px;
+        border-radius: 6px;
+        font-size: 0.55rem;
+        margin-bottom: 20px;
+      }
+
+      .nav a {
+        display: block;
+        padding: 12px;
+        margin-bottom: 10px;
+        font-size: 0.55rem;
+        text-decoration: none;
+        color: #fff;
+        border-radius: 4px;
+        background: rgba(0, 0, 0, 0.25);
+        transition: 0.2s;
+      }
+
+      .nav a:hover {
+        background: rgba(0, 0, 0, 0.5);
+      }
+
+      /* Main Content */
+      .main {
+        flex: 1;
+        padding: 25px;
+        overflow-y: auto;
+        background: #0b233d;
+      }
+
+      h1 {
+        color: #00ffff;
+        text-shadow:
+          0 0 15px #00ffff,
+          0 0 40px #ff00ff;
+        margin-bottom: 20px;
+        font-size: 1.5rem;
+      }
+
+      /* Add Quest Button */
+      .modal-btn {
+        display: inline-block;
+        padding: 12px 20px;
+        background: linear-gradient(90deg, #ff8c00, #ff2fa1);
+        border-radius: 6px;
+        font-size: 0.6rem;
+        font-weight: bold;
+        color: #fff;
+        border: none;
+        cursor: pointer;
+        transition: 0.25s;
+        margin-bottom: 20px;
+      }
+
+      .modal-btn:hover {
+        background: linear-gradient(90deg, #ff2fa1, #00c8ff);
+      }
+
+      /* Quest Cards */
+      .quest-cards {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+        gap: 20px;
+      }
+
+      .quest-card {
+        background: linear-gradient(180deg, #111, #000);
+        border: 2px solid #00ffff;
+        border-radius: 10px;
+        padding: 25px;
+        text-align: center;
+        font-size: 0.6rem;
+        box-shadow: 0 0 20px rgba(0, 255, 255, 0.3);
+        transition: 0.25s;
+      }
+
+      .quest-card:hover {
+        transform: translateY(-6px);
+        box-shadow: 0 0 35px rgba(255, 0, 255, 0.7);
+        border-color: #ff00ff;
+      }
+
+      .quest-title {
+        font-weight: bold;
+        margin-bottom: 10px;
+        font-size: 0.65rem;
+      }
+
+      .quest-desc {
+        font-size: 0.55rem;
+        margin-bottom: 15px;
+      }
+
+      .quest-stats {
+        display: flex;
+        justify-content: center; /* center horizontally */
+        gap: 20px; /* space between EXP and GOLD */
+        margin-bottom: 15px;
+      }
+
+      .stat-box {
+        display: flex;
+        flex-direction: column;
+        font-size: 0.5rem;
+      }
+
+      .stat-value {
+        font-weight: bold;
+      }
+
+      .quest-actions a {
+        display: inline-block;
+        margin: 5px;
+        padding: 5px 8px;
+        background: linear-gradient(90deg, #ff8c00, #ff2fa1);
+        border-radius: 4px;
+        font-size: 0.5rem;
+        text-decoration: none;
+        color: #fff;
+        transition: 0.25s;
+      }
+
+      .quest-actions a:hover {
+        background: linear-gradient(90deg, #ff2fa1, #00c8ff);
+      }
+
+      /* Modal styling */
+      .modal {
+        display: none;
+        position: fixed;
+        z-index: 1000;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.7);
+        backdrop-filter: blur(3px);
+      }
+
+      .modal-content {
+        background: linear-gradient(180deg, #111, #000);
+        margin: 5% auto;
+        padding: 40px;
+        border: 2px solid #00ffff;
+        border-radius: 12px;
+        width: 500px; /* increased width */
+        max-width: 90%;
+        position: relative;
+        box-shadow: 0 0 50px rgba(0, 255, 255, 0.8); /* stronger glow */
+        text-align: center;
+      }
+
+      .modal-content h2 {
+        color: #00ffff;
+        text-shadow:
+          0 0 15px #00ffff,
+          0 0 50px #ff00ff; /* more glow */
+        margin-bottom: 20px;
+        font-size: 1.2rem; /* slightly larger */
+      }
+
+      .close {
+        position: absolute;
+        top: 10px;
+        right: 15px;
+        font-size: 1.2rem;
+        color: #ff00ff;
+        cursor: pointer;
+      }
+
+      #questForm input,
+      #questForm textarea {
+        width: 90%;
+        margin-bottom: 12px;
+        padding: 12px;
+        border: none;
+        border-radius: 6px;
+        font-family: "Press Start 2P", monospace;
+        font-size: 0.7rem;
+      }
+
+      #questForm button {
+        width: 95%;
+        padding: 14px;
+        border: none;
+        border-radius: 6px;
+        background: linear-gradient(90deg, #ff8c00, #ff2fa1);
+        color: #fff;
+        font-weight: bold;
+        cursor: pointer;
+        transition: 0.25s;
+      }
+
+      #questForm button:hover {
+        background: linear-gradient(90deg, #ff2fa1, #00c8ff);
+      }
+
+      /* Scanlines */
+      .scanlines::before {
+        content: "";
+        position: fixed;
+        inset: 0;
+        background: repeating-linear-gradient(
+          to bottom,
+          rgba(255, 255, 255, 0.03),
+          rgba(255, 255, 255, 0.03) 1px,
+          transparent 1px,
+          transparent 3px
+        );
+        pointer-events: none;
+      }
