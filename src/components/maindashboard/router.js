@@ -11,13 +11,9 @@ const routes = {
   campaigns: "../campaigns/Campaigns.html",
   referrals: "../referrals/Referrals.html",
   rewards: "../Rewards/RewardsPage.html",
-    'home': null,
-    'quests': '../QuestBoard/QuestPage.html',
-    'campaigns': '../campaigns/Campaigns.html',
-    'referrals': '../referrals/Referrals.html',
-    'rewards': '../rewards/Rewards.html',
-    'questmanagement' : '../QuestManagement/ManageQuest.html',
-    'queststats' : '../QuestManagement/QuestStats.html',
+  questmanagement: "../QuestManagement/ManageQuest.html",
+  queststats: "../QuestManagement/QuestStats.html",
+  usermanagement: "../UserManagement/CreateUser.html",
 };
 
 let homeContent = "";

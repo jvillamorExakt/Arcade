@@ -9,8 +9,7 @@
       href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Orbitron:wght@400;700;900&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="managequest.css">
-    
+    <link rel="stylesheet" href="managequest.css" />
   </head>
 
   <body class="scanlines">
@@ -23,7 +22,6 @@
           LEVEL: 99<br /><br />
           XP: 999 / 1000
         </div>
-
 
         <br />
         <div class="nav-section">
@@ -71,6 +69,8 @@
             <div class="quest-actions">
               <a href="#" class="editQuestBtn">✏️ Edit</a>
               <a href="#" class="deleteQuestBtn">🗑️ Delete</a>
+              <a href="#" class="viewDetailsBtn">🔍 View Details</a>
+              <a href="#" class="completeQuestBtn">✅ Mark Complete</a>
             </div>
           </div>
 
@@ -80,20 +80,20 @@
               Explore the dungeon and defeat enemies to gain loot and XP.
             </div>
             <div class="quest-stats">
-  <div class="stat-box">
-    <div class="stat-value">+150 🌟</div>
-    <div class="stat-label">EXP</div>
-  </div>
-
-  <div class="stat-box">
-    <div class="stat-value">+30 🪙</div>
-    <div class="stat-label">GOLD</div>
-  </div>
-</div>
-
+              <div class="stat-box">
+                <div class="stat-value">+150 🌟</div>
+                <div class="stat-label">EXP</div>
+              </div>
+              <div class="stat-box">
+                <div class="stat-value">+30 🪙</div>
+                <div class="stat-label">GOLD</div>
+              </div>
+            </div>
             <div class="quest-actions">
               <a href="#" class="editQuestBtn">✏️ Edit</a>
               <a href="#" class="deleteQuestBtn">🗑️ Delete</a>
+              <a href="#" class="viewDetailsBtn">🔍 View Details</a>
+              <a href="#" class="completeQuestBtn">✅ Mark Complete</a>
             </div>
           </div>
         </div>
@@ -130,14 +130,14 @@
                 placeholder="e.g., 150"
                 required
               />
-            <label for="diff">Difficulty</label>
-                          <input
-                            type="number"
-                            id="diff"
-                            name="diff"
-                            placeholder="e.g., 150"
-                            required
-                          />
+              <label for="diff">Difficulty</label>
+              <input
+                type="number"
+                id="diff"
+                name="diff"
+                placeholder="e.g., 150"
+                required
+              />
               <label for="gold">GOLD</label>
               <input
                 type="number"
@@ -147,37 +147,37 @@
                 required
               />
               <!-- Quest Type -->
-<label for="questType">Quest Type</label>
-<select id="questType" name="questType" required>
-  <option value="">Select quest type</option>
-  <option value="open">Open</option>
-  <option value="specific">Specific</option>
-  <option value="group">Group</option>
-</select>
+              <label for="questType">Quest Type</label>
+              <select id="questType" name="questType" required>
+                <option value="">Select quest type</option>
+                <option value="open">Open</option>
+                <option value="specific">Specific</option>
+                <option value="group">Group</option>
+              </select>
 
-<!-- Specific Users (hidden by default) -->
-<div id="specificUsersWrapper" style="display: none;">
-  <label for="specificUsers">Assign to User</label>
-  <select id="specificUsers" name="specificUsers">
-    <option value="">Select user</option>
-    <option value="1">Juan Dela Cruz</option>
-    <option value="2">Maria Santos</option>
-    <option value="3">Pedro Reyes</option>
-    <!-- Replace with dynamic users later -->
-  </select>
-</div>
+              <!-- Specific Users (hidden by default) -->
+              <div id="specificUsersWrapper" style="display: none">
+                <label for="specificUsers">Assign to User</label>
+                <select id="specificUsers" name="specificUsers">
+                  <option value="">Select user</option>
+                  <option value="1">Juan Dela Cruz</option>
+                  <option value="2">Maria Santos</option>
+                  <option value="3">Pedro Reyes</option>
+                  <!-- Replace with dynamic users later -->
+                </select>
+              </div>
 
-<!-- Group Members Limit (hidden by default) -->
-<div id="groupLimitWrapper" style="display: none;">
-  <label for="groupLimit">Max Members</label>
-  <input
-    type="number"
-    id="groupLimit"
-    name="groupLimit"
-    min="2"
-    placeholder="e.g., 5"
-  />
-</div>
+              <!-- Group Members Limit (hidden by default) -->
+              <div id="groupLimitWrapper" style="display: none">
+                <label for="groupLimit">Max Members</label>
+                <input
+                  type="number"
+                  id="groupLimit"
+                  name="groupLimit"
+                  min="2"
+                  placeholder="e.g., 5"
+                />
+              </div>
               <button type="submit">Save</button>
             </form>
           </div>
