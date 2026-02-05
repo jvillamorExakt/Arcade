@@ -316,3 +316,29 @@ h1 {
   background: rgba(255, 255, 255, 0.95);
   color: #000;
 }
+/* View Details Modal Styling */
+#viewDetailsModal .modal-content {
+  width: 600px; /* Make it wider */
+  max-width: 95%; /* Responsive max width */
+  padding: 50px 40px; /* Slightly more padding for readability */
+  font-size: 0.75rem; /* Slightly larger font for easier reading */
+  text-align: left; /* Align text to left for better details view */
+}
+
+#viewDetailsModal .modal-content h2 {
+  font-size: 1.3rem; /* Larger title for view modal */
+  margin-bottom: 25px;
+  padding: 10px 0;
+  text-align: center;
+}
+
+#viewDetailsModal .modal-content p {
+  margin-bottom: 12px;
+  line-height: 1.4;
+  color: #cbd5e1;
+}
+
+#viewDetailsModal .modal-content span {
+  font-weight: bold;
+  color: #00ffff;
+}
