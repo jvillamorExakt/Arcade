@@ -33,6 +33,16 @@ function initManageQuest() {
   const confirmDeleteBtn = document.getElementById("confirmDeleteBtn");
   const cancelDeleteBtn = document.getElementById("cancelDeleteBtn");
 
+  // VIEW DETAILS MODAL
+  const viewModal = document.getElementById("viewDetailsModal");
+  const viewQuestTitle = document.getElementById("viewQuestTitle");
+  const viewQuestDesc = document.getElementById("viewQuestDesc");
+  const viewQuestExp = document.getElementById("viewQuestExp");
+  const viewQuestGold = document.getElementById("viewQuestGold");
+  const viewQuestDiff = document.getElementById("viewQuestDiff");
+  const viewQuestType = document.getElementById("viewQuestType");
+  const viewAssignedUser = document.getElementById("viewAssignedUser");
+
   // Quest Type Elements
   const questTypeSelect = document.getElementById("questType");
   const specificUsersWrapper = document.getElementById("specificUsersWrapper");
@@ -76,7 +86,6 @@ function initManageQuest() {
         .setAttribute("required", "required");
       document.getElementById("specificUsers").removeAttribute("required");
     } else {
-      // 'open' type - no additional fields needed
       document.getElementById("specificUsers").removeAttribute("required");
       document.getElementById("groupLimit").removeAttribute("required");
     }
@@ -101,12 +110,14 @@ function initManageQuest() {
       (btn.onclick = () => {
         questModal.style.display = "none";
         deleteModal.style.display = "none";
+        viewModal.style.display = "none"; // Close View Details modal as well
       }),
   );
 
   window.onclick = (e) => {
     if (e.target === questModal) questModal.style.display = "none";
     if (e.target === deleteModal) deleteModal.style.display = "none";
+    if (e.target === viewModal) viewModal.style.display = "none";
   };
 
   // Add/Edit quest
@@ -140,7 +151,6 @@ function initManageQuest() {
       currentEditCard.querySelectorAll(".stat-value")[1].innerText =
         `+${gold} 🪙`;
 
-      // Update quest type badge if it exists
       const typeBadge = currentEditCard.querySelector(".quest-type-badge");
       if (typeBadge) {
         typeBadge.innerHTML = `${questTypeLabel}${additionalInfo}`;
@@ -169,6 +179,7 @@ function initManageQuest() {
                 <div class="quest-actions">
                     <a href="#" class="editQuestBtn">✏️ Edit</a>
                     <a href="#" class="deleteQuestBtn">🗑️ Delete</a>
+                    <a href="#" class="viewDetailsBtn">🔍 View Details</a>
                 </div>
             `;
       questCards.appendChild(newCard);
@@ -181,10 +192,11 @@ function initManageQuest() {
     questModal.style.display = "none";
   });
 
-  // Attach Edit/Delete events to a quest card
+  // Attach Edit/Delete/View events to a quest card
   function attachCardEvents(card) {
     const editBtn = card.querySelector(".editQuestBtn");
     const deleteBtn = card.querySelector(".deleteQuestBtn");
+    const viewBtn = card.querySelector(".viewDetailsBtn");
 
     editBtn.onclick = (e) => {
       e.preventDefault();
@@ -210,6 +222,52 @@ function initManageQuest() {
       currentDeleteCard = card;
       deleteModal.style.display = "block";
     };
+
+    // VIEW DETAILS button
+    if (viewBtn) {
+      viewBtn.onclick = (e) => {
+        e.preventDefault();
+        const title = card.querySelector(".quest-title").innerText;
+        const desc = card.querySelector(".quest-desc").innerText;
+        const exp = card
+          .querySelectorAll(".stat-value")[0]
+          .innerText.replace("🌟", "")
+          .replace("+", "")
+          .trim();
+        const gold = card
+          .querySelectorAll(".stat-value")[1]
+          .innerText.replace("🪙", "")
+          .replace("+", "")
+          .trim();
+        const typeBadge =
+          card.querySelector(".quest-type-badge")?.innerText || "Open";
+        viewQuestTitle.textContent = title;
+        viewQuestDesc.textContent = desc;
+        viewQuestExp.textContent = exp;
+        viewQuestGold.textContent = gold;
+
+        // Extract type and assigned info
+        const [type, assigned] = typeBadge.split(" | ");
+        viewQuestType.textContent = type || "Open";
+        if (assigned) {
+          if (assigned.includes("Assigned to:")) {
+            viewAssignedUser.textContent = assigned
+              .replace("Assigned to:", "")
+              .trim();
+          } else if (assigned.includes("Max Members:")) {
+            viewAssignedUser.textContent = assigned
+              .replace("Max Members:", "")
+              .trim();
+          } else {
+            viewAssignedUser.textContent = "None";
+          }
+        } else {
+          viewAssignedUser.textContent = "None";
+        }
+
+        viewModal.style.display = "block";
+      };
+    }
   }
 
   // Initialize existing cards

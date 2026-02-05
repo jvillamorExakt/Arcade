@@ -10,6 +10,39 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="managequest.css" />
+    <style>
+      /* Basic modal styling in case your CSS doesn't cover it */
+      .modal {
+        display: none;
+        position: fixed;
+        z-index: 100;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        overflow: auto;
+        background-color: rgba(0, 0, 0, 0.7);
+      }
+      .modal-content {
+        background-color: #1a1a1a;
+        margin: 10% auto;
+        padding: 20px;
+        border-radius: 10px;
+        width: 80%;
+        max-width: 500px;
+        color: #fff;
+        font-family: "Press Start 2P", cursive;
+      }
+      .close {
+        float: right;
+        font-size: 24px;
+        font-weight: bold;
+        cursor: pointer;
+      }
+      .close:hover {
+        color: #ff2fa1;
+      }
+    </style>
   </head>
 
   <body class="scanlines">
@@ -50,7 +83,16 @@
 
         <!-- Quest Cards -->
         <div class="quest-cards" id="questCards">
-          <div class="quest-card">
+          <div
+            class="quest-card"
+            data-title="Community Onboarding"
+            data-desc="Join official AEL community spaces and learn the fundamentals of the ecosystem."
+            data-exp="150"
+            data-gold="30"
+            data-diff="1"
+            data-type="open"
+            data-assigneduser="Juan Dela Cruz"
+          >
             <div class="quest-title">Community Onboarding</div>
             <div class="quest-desc">
               Join official AEL community spaces and learn the fundamentals of
@@ -74,7 +116,16 @@
             </div>
           </div>
 
-          <div class="quest-card">
+          <div
+            class="quest-card"
+            data-title="Dungeon Crawl"
+            data-desc="Explore the dungeon and defeat enemies to gain loot and XP."
+            data-exp="150"
+            data-gold="30"
+            data-diff="2"
+            data-type="group"
+            data-assigneduser="Maria Santos, Pedro Reyes"
+          >
             <div class="quest-title">Dungeon Crawl</div>
             <div class="quest-desc">
               Explore the dungeon and defeat enemies to gain loot and XP.
@@ -98,7 +149,7 @@
           </div>
         </div>
 
-        <!-- Quest Modal - MOVED INSIDE MAIN -->
+        <!-- Quest Modal -->
         <div id="questModal" class="modal">
           <div class="modal-content">
             <span class="close">&times;</span>
@@ -112,7 +163,6 @@
                 placeholder="Enter quest title"
                 required
               />
-
               <label for="desc">Description</label>
               <textarea
                 id="desc"
@@ -121,7 +171,6 @@
                 placeholder="Enter description"
                 required
               ></textarea>
-
               <label for="exp">EXP</label>
               <input
                 type="number"
@@ -135,7 +184,7 @@
                 type="number"
                 id="diff"
                 name="diff"
-                placeholder="e.g., 150"
+                placeholder="e.g., 1"
                 required
               />
               <label for="gold">GOLD</label>
@@ -146,7 +195,6 @@
                 placeholder="e.g., 30"
                 required
               />
-              <!-- Quest Type -->
               <label for="questType">Quest Type</label>
               <select id="questType" name="questType" required>
                 <option value="">Select quest type</option>
@@ -155,7 +203,6 @@
                 <option value="group">Group</option>
               </select>
 
-              <!-- Specific Users (hidden by default) -->
               <div id="specificUsersWrapper" style="display: none">
                 <label for="specificUsers">Assign to User</label>
                 <select id="specificUsers" name="specificUsers">
@@ -163,11 +210,9 @@
                   <option value="1">Juan Dela Cruz</option>
                   <option value="2">Maria Santos</option>
                   <option value="3">Pedro Reyes</option>
-                  <!-- Replace with dynamic users later -->
                 </select>
               </div>
 
-              <!-- Group Members Limit (hidden by default) -->
               <div id="groupLimitWrapper" style="display: none">
                 <label for="groupLimit">Max Members</label>
                 <input
@@ -183,7 +228,7 @@
           </div>
         </div>
 
-        <!-- Delete Confirmation Modal - MOVED INSIDE MAIN -->
+        <!-- Delete Modal -->
         <div id="deleteModal" class="modal">
           <div class="modal-content">
             <span class="close">&times;</span>
@@ -221,9 +266,29 @@
             </button>
           </div>
         </div>
+
+        <!-- View Details Modal -->
+        <div id="viewDetailsModal" class="modal">
+          <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2 id="viewQuestTitle">Quest Details</h2>
+            <p>
+              <strong>Description:</strong> <span id="viewQuestDesc"></span>
+            </p>
+            <p><strong>EXP:</strong> <span id="viewQuestExp"></span></p>
+            <p><strong>GOLD:</strong> <span id="viewQuestGold"></span></p>
+            <p><strong>Difficulty:</strong> <span id="viewQuestDiff"></span></p>
+            <p><strong>Type:</strong> <span id="viewQuestType"></span></p>
+            <p>
+              <strong>Assigned User:</strong>
+              <span id="viewAssignedUser">None</span>
+            </p>
+          </div>
+        </div>
       </main>
     </div>
 
-    <!-- REMOVED: Scripts are now loaded in MainDashboard.html -->
+    <!-- Link external script -->
+    <script src="managequest.js"></script>
   </body>
 </html>
