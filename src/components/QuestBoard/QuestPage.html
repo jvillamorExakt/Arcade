@@ -3,222 +3,33 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>AEL | Quest Board</title>
+
+    <title>EAL | Quest Board</title>
+
 
     <link
       href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Orbitron:wght@400;700;900&display=swap"
       rel="stylesheet"
     />
 
-    <style>
-      * {
-        box-sizing: border-box;
-        margin: 0;
-        padding: 0;
-      }
-
-      body {
-        font-family: "Press Start 2P", cursive;
-        background: #0b233d;
-        color: #fff;
-        height: 100vh;
-        overflow: hidden;
-      }
-
-      /* ===== LAYOUT ===== */
-      .app {
-        display: flex;
-        height: 100vh;
-      }
-
-      /* ====== SIDEBAR ====== */
-      .sidebar {
-        width: 260px;
-        background: linear-gradient(180deg, #ff8c00, #ff2fa1, #00c8ff);
-        padding: 20px;
-        display: flex;
-        flex-direction: column;
-      }
-
-      .logo {
-        font-size: 1.3rem;
-        margin-bottom: 30px;
-      }
-
-      .profile {
-        background: rgba(0, 0, 0, 0.35);
-        padding: 15px;
-        border-radius: 6px;
-        font-size: 0.55rem;
-        margin-bottom: 20px;
-      }
-
-      .nav a {
-        display: block;
-        padding: 12px;
-        margin-bottom: 10px;
-        font-size: 0.55rem;
-        text-decoration: none;
-        color: #fff;
-        border-radius: 4px;
-        background: rgba(0, 0, 0, 0.25);
-        transition: 0.2s;
-      }
-
-      .nav a:hover {
-        background: rgba(0, 0, 0, 0.5);
-      }
-
-      .gradient-btn {
-        display: block;
-        padding: 12px;
-        margin-bottom: 10px;
-        font-size: 0.55rem;
-        text-decoration: none;
-        color: #fff;
-        border-radius: 6px;
-        background: linear-gradient(135deg, #ff00ff, #ff5a5a);
-        box-shadow: 0 0 15px rgba(255, 0, 255, 0.4);
-        transition: 0.25s;
-      }
-
-      .gradient-btn:hover {
-        background: linear-gradient(135deg, #00ffff, #ff00ff);
-        box-shadow: 0 0 25px rgba(255, 0, 255, 0.7);
-      }
-      /* ===== MAIN ===== */
-      .main {
-        flex: 1;
-        padding: 30px;
-        overflow-y: auto;
-        background: #0b233d;
-      }
-
-      /* ===== HEADER ===== */
-      .page-title {
-        font-size: 1.2rem;
-        margin-bottom: 8px;
-        color: #00ffff;
-        text-shadow: 0 0 10px #00ffff;
-      }
-
-      .page-subtitle {
-        font-size: 0.55rem;
-        color: #cbd5e1;
-        margin-bottom: 30px;
-      }
-
-      /* ===== QUEST GRID ===== */
-      .quest-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(420px, 1fr));
-        gap: 26px;
-      }
-
-      /* ===== QUEST CARD ===== */
-      .quest-card {
-        display: flex;
-        gap: 24px;
-        background: linear-gradient(180deg, #0f1f33, #081726);
-        border: 2px solid #00ffff;
-        border-radius: 18px;
-        padding: 28px;
-        min-height: 180px;
-        box-shadow: 0 0 22px rgba(0, 255, 255, 0.25);
-        transition: all 0.25s ease;
-      }
-
-      .quest-card:hover {
-        transform: translateY(-8px);
-        border-color: #ff00ff;
-        box-shadow: 0 0 38px rgba(255, 0, 255, 0.6);
-      }
-
-      /* ===== LEFT STATS ===== */
-      .quest-stats {
-        min-width: 120px;
-        border-right: 2px solid rgba(255, 255, 255, 0.15);
-        padding-right: 20px;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        gap: 14px;
-        text-align: center;
-      }
-
-      .stat-box {
-        background: rgba(0, 0, 0, 0.35);
-        border-radius: 10px;
-        padding: 10px 8px;
-      }
-
-      .stat-value {
-        font-size: 0.85rem;
-        color: #00ffff;
-      }
-
-      .stat-label {
-        font-size: 0.45rem;
-        color: #cbd5e1;
-        margin-top: 4px;
-      }
-
-      /* ===== QUEST INFO ===== */
-      .quest-info {
-        flex: 1;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-      }
-
-      .quest-title {
-        font-size: 0.75rem;
-        margin-bottom: 14px;
-      }
-
-      .quest-desc {
-        font-size: 0.55rem;
-        color: #cbd5e1;
-        line-height: 1.7;
-      }
-    </style>
+    <link rel="stylesheet" href="questboard.css">
   </head>
 
   <body>
     <div class="app">
       <!-- SIDEBAR -->
       <aside class="sidebar">
-        <div class="logo">🎮 AEL</div>
 
-        <div class="profile">
-          USER: PLAYER 1<br /><br />
-          LEVEL: 1<br /><br />
-          XP: 0 / 100
-        </div>
+        <div class="logo">🎮 EAL</div>
+<!-- <nav class="nav">
+    <a href="../maindashboard/MainDashboard.html">HOME</a>
+    <a href="QuestPage.html" class="active">QUEST BOARD</a>
+    <a href="#">CAMPAIGNS</a>
+    <a href="#">REFERRALS</a>
+    <a href="#">REWARDS</a>
+    <a href="https://www.flaticon.com/free-icons/pixel" title="pixel icons">Pixel icons created by Dooder - Flaticon</a>
+</nav> -->
 
-        <nav class="nav">
-          <a href="MainDashboard.html">HOME</a>
-          <a href="QuestPage.html">QUESTS</a>
-          <a href="#">CAMPAIGNS</a>
-          <a href="#">REFERRALS</a>
-          <a href="#">REWARDS</a>
-        </nav>
-        <br />
-        <!-- Admin / Quest Management Navigation -->
-        <div class="nav-section">
-          <h4>Quest Management</h4>
-          <nav class="nav">
-            <a href="ManageQuest.html">🛠️ Manage Quest</a>
-            <a href="QuestStats.html">📊 Quest Stats</a>
-          </nav>
-        </div>
-        <br />
-        <div class="nav-section">
-          <h4>User Management</h4>
-          <nav class="nav">
-            <a href="ManageUsers.html">🛠️ Manage Users</a>
-          </nav>
-        </div>
       </aside>
 
       <!-- MAIN -->
@@ -417,5 +228,6 @@
         </section>
       </main>
     </div>
+     <script src="router.js"></script>
   </body>
 </html>

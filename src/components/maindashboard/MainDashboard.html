@@ -3,165 +3,23 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
     <title>Exakt Leveling Arcade</title>
+
 
     <link
       href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Orbitron:wght@400;700;900&display=swap"
       rel="stylesheet"
     />
+    <!-- load all css dito kasi ito main dash -->
+    <link rel="stylesheet" href="maindashboard.css">
+    <link rel="stylesheet" href="../QuestBoard/questboard.css">
 
     <style>
-      * {
-        box-sizing: border-box;
-        margin: 0;
-        padding: 0;
-      }
-
-      body {
-        font-family: "Press Start 2P", cursive;
-        background: #0b233d;
-        color: #fff;
-        height: 100vh;
-        overflow: hidden;
-      }
-
-      /* ====== LAYOUT ====== */
-      .app {
-        display: flex;
-        height: 100vh;
-      }
-
-      /* ====== SIDEBAR ====== */
-      .sidebar {
-        width: 260px;
-        background: linear-gradient(180deg, #ff8c00, #ff2fa1, #00c8ff);
-        padding: 20px;
-        display: flex;
-        flex-direction: column;
-      }
-
-      .logo {
-        font-size: 1.3rem;
-        margin-bottom: 30px;
-      }
-
-      .profile {
-        background: rgba(0, 0, 0, 0.35);
-        padding: 15px;
-        border-radius: 6px;
-        font-size: 0.55rem;
-        margin-bottom: 20px;
-      }
-
-      .nav a {
-        display: block;
-        padding: 12px;
-        margin-bottom: 10px;
-        font-size: 0.55rem;
-        text-decoration: none;
-        color: #fff;
-        border-radius: 4px;
-        background: rgba(0, 0, 0, 0.25);
-        transition: 0.2s;
-      }
-
-      .nav a:hover {
-        background: rgba(0, 0, 0, 0.5);
-      }
-
-      /* ====== MAIN CONTENT ====== */
-      .main {
-        flex: 1;
-        padding: 25px;
-        overflow-y: auto;
-        background: #0b233d;
-      }
-
-      /* ====== HERO ====== */
-      .hero {
-        position: relative;
-        height: 300px;
-        background:
-          linear-gradient(180deg, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.9)),
-          linear-gradient(135deg, #ff00ff, #00ffff);
-        border-radius: 12px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        text-align: center;
-        box-shadow: 0 0 40px rgba(255, 0, 255, 0.4);
-        margin-bottom: 30px;
-      }
-
-      .hero h1 {
-        font-size: 1.8rem;
-        color: #00ffff;
-        text-shadow:
-          0 0 15px #00ffff,
-          0 0 40px #ff00ff;
-      }
-
-      .hero span {
-        display: block;
-        font-size: 0.7rem;
-        margin-top: 15px;
-        color: #fff;
-      }
-
-      /* ====== TAG BAR ====== */
-      .tags {
-        display: flex;
-        justify-content: space-between;
-        margin-bottom: 25px;
-      }
-
-      .tag {
-        padding: 10px 20px;
-        font-size: 0.6rem;
-        border-radius: 4px;
-        background: linear-gradient(90deg, #00ffff, #ff00ff);
-        color: #000;
-        box-shadow: 0 0 15px rgba(0, 255, 255, 0.6);
-      }
-
-      /* ====== MENU CARDS ====== */
-      .cards {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-        gap: 20px;
-      }
-
-      .card {
-        background: linear-gradient(180deg, #111, #000);
-        border: 2px solid #00ffff;
-        border-radius: 10px;
-        padding: 25px;
-        text-align: center;
-        font-size: 0.6rem;
-        box-shadow: 0 0 20px rgba(0, 255, 255, 0.3);
-        transition: 0.25s;
-      }
-
-      .card:hover {
-        transform: translateY(-8px);
-        box-shadow: 0 0 35px rgba(255, 0, 255, 0.7);
-        border-color: #ff00ff;
-      }
-
-      /* ====== SCANLINES ====== */
-      .scanlines::before {
-        content: "";
-        position: fixed;
-        inset: 0;
-        background: repeating-linear-gradient(
-          to bottom,
-          rgba(255, 255, 255, 0.03),
-          rgba(255, 255, 255, 0.03) 1px,
-          transparent 1px,
-          transparent 3px
-        );
-        pointer-events: none;
-      }
+        #main-content {
+            transition: opacity 0.3s ease;
+            width: 100%;
+        }
     </style>
   </head>
 
@@ -178,11 +36,11 @@
         </div>
 
         <nav class="nav">
-          <a href="MainDashboard.html">HOME</a>
-          <a href="QuestPage.html">QUESTS</a>
-          <a href="#">CAMPAIGNS</a>
-          <a href="#">REFERRALS</a>
-          <a href="#">REWARDS</a>
+            <a href="#home">HOME</a>
+            <a href="#quests" class="active">QUESTS</a>
+            <a href="#campaigns">CAMPAIGNS</a>
+            <a href="#referrals">REFERRALS</a>
+            <a href="#rewards">REWARDS</a>
         </nav>
         <br />
         <!-- Admin / Quest Management Navigation -->
@@ -202,27 +60,31 @@
         </div>
       </aside>
 
-      <!-- MAIN DASHBOARD -->
-      <main class="main">
-        <section class="hero">
-          <div>
-            <h1>EXAKT LEVELING COMMUNITY QUESTING</h1>
-            <span>#TOGETHERWEPLAY</span>
+      <!-- MAIN CONTENT AREA (will be replaced by router) -->
+      <div id="main-content">
+        <!-- Default/Home content -->
+        <main class="main">
+          <section class="hero">
+            <div>
+              <h1>EXAKT LEVELING COMMUNITY QUESTING</h1>
+              <span>#TOGETHERWEPLAY</span>
+            </div>
+          </section>
+
+          <div class="tags">
+            <div class="tag">#TOGETHERWEPLAY</div>
+            <div class="tag">EXAKT LEVELING GUILD GAMES</div>
           </div>
-        </section>
 
-        <div class="tags">
-          <div class="tag">#TOGETHERWEPLAY</div>
-          <div class="tag">EXAKT LEVELING GUILD GAMES</div>
-        </div>
-
-        <section class="cards">
-          <div class="card">START QUEST</div>
-          <div class="card">HIGH SCORES</div>
-          <div class="card">OPTIONS</div>
-          <div class="card">CREDITS</div>
-        </section>
-      </main>
+          <section class="cards">
+            <div class="card">START QUEST</div>
+            <div class="card">HIGH SCORES</div>
+            <div class="card">OPTIONS</div>
+            <div class="card">CREDITS</div>
+          </section>
+        </main>
+      </div>
     </div>
+    <script src="router.js"></script>
   </body>
 </html>
