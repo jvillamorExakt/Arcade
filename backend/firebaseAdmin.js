@@ -8,14 +8,24 @@ const storageBucket = process.env.FIREBASE_STORAGE_BUCKET;
 if (!admin.apps.length) {
   if (serviceAccountPath) {
     if (!fs.existsSync(serviceAccountPath)) {
-      throw new Error(`Service account file not found: ${serviceAccountPath}`);
+      console.warn(
+        `Service account file not found: ${serviceAccountPath}. Falling back to application default credentials.`,
+      );
     }
-    const serviceAccount = JSON.parse(fs.readFileSync(serviceAccountPath, "utf8"));
-    admin.initializeApp({
-      credential: admin.credential.cert(serviceAccount),
-      projectId: serviceAccount.project_id || projectId,
-      storageBucket,
-    });
+    if (fs.existsSync(serviceAccountPath)) {
+      const serviceAccount = JSON.parse(fs.readFileSync(serviceAccountPath, "utf8"));
+      admin.initializeApp({
+        credential: admin.credential.cert(serviceAccount),
+        projectId: serviceAccount.project_id || projectId,
+        storageBucket,
+      });
+    } else {
+      admin.initializeApp({
+        credential: admin.credential.applicationDefault(),
+        projectId,
+        storageBucket,
+      });
+    }
   } else {
     admin.initializeApp({
       credential: admin.credential.applicationDefault(),

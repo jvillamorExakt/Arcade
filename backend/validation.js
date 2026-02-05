@@ -63,6 +63,7 @@ const SCHEMAS = {
   bonusQuests: {
     title: "string",
     description: "string",
+    difficulty: "string",
     eligibleDepartments: "string[]",
     imageUrl: "string",
     goldReward: "number",

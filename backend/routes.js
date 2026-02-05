@@ -7,6 +7,18 @@ const { db, FieldValue } = require("./firestore");
 const { SCHEMAS, normalizeBySchema, hasSchemaField } = require("./validation");
 const { serializeDoc } = require("./utils");
 
+function isCredentialsError(error) {
+  const message = String(error?.message || "");
+  return /credential|credentials|default credentials|invalid-credential/i.test(message);
+}
+
+function respondCredentialError(res) {
+  return res.status(503).json({
+    error:
+      "Firebase credentials are not configured. Set FIREBASE_SERVICE_ACCOUNT or GOOGLE_APPLICATION_CREDENTIALS.",
+  });
+}
+
 function applyTimestamps(schema, data, { isNew }) {
   const updates = {};
   if (isNew && hasSchemaField(schema, "createdAt")) {
@@ -416,6 +428,9 @@ router.post("/auth/register", async (req, res) => {
       });
       createdNew = true;
     } catch (error) {
+      if (isCredentialsError(error)) {
+        return respondCredentialError(res);
+      }
       if (error.code === "auth/configuration-not-found") {
         return res.status(400).json({
           error:
@@ -449,7 +464,14 @@ router.post("/auth/register", async (req, res) => {
       categoryIds,
     });
 
-    await db.collection("users").doc(userId).set(userDoc, { merge: true });
+    try {
+      await db.collection("users").doc(userId).set(userDoc, { merge: true });
+    } catch (error) {
+      if (isCredentialsError(error)) {
+        return respondCredentialError(res);
+      }
+      throw error;
+    }
 
     return res.status(createdNew ? 201 : 200).json({
       userId,
@@ -478,14 +500,30 @@ router.post("/auth/login", async (req, res) => {
     let resolvedName = null;
 
     if (!identifier.includes("@")) {
-      let userSnapshot = await db.collection("users").doc(identifier).get();
+      let userSnapshot;
+      try {
+        userSnapshot = await db.collection("users").doc(identifier).get();
+      } catch (error) {
+        if (isCredentialsError(error)) {
+          return respondCredentialError(res);
+        }
+        throw error;
+      }
       if (!userSnapshot.exists) {
         const usernameNormalized = normalizeUsername(identifier);
-        const byUsername = await db
-          .collection("users")
-          .where("usernameNormalized", "==", usernameNormalized)
-          .limit(1)
-          .get();
+        let byUsername;
+        try {
+          byUsername = await db
+            .collection("users")
+            .where("usernameNormalized", "==", usernameNormalized)
+            .limit(1)
+            .get();
+        } catch (error) {
+          if (isCredentialsError(error)) {
+            return respondCredentialError(res);
+          }
+          throw error;
+        }
         if (byUsername.empty) {
           return res.status(404).json({ error: "User not found" });
         }
@@ -502,8 +540,16 @@ router.post("/auth/login", async (req, res) => {
 
     const authData = await signInWithPassword(email, password);
     const userId = resolvedUserId || authData.localId;
-    const userSnapshot = await db.collection("users").doc(userId).get();
-    const profile = userSnapshot.exists ? serializeDoc(userSnapshot) : null;
+    let profile = null;
+    try {
+      const userSnapshot = await db.collection("users").doc(userId).get();
+      profile = userSnapshot.exists ? serializeDoc(userSnapshot) : null;
+    } catch (error) {
+      if (isCredentialsError(error)) {
+        return respondCredentialError(res);
+      }
+      throw error;
+    }
     const name = resolvedName || profile?.name || null;
 
     return res.json({
