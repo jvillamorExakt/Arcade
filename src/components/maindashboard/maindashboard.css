@@ -127,9 +127,7 @@ body {
 /* ===== HERO ===== */
 .hero {
   height: 300px;
-  background:
-    linear-gradient(180deg, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.9)),
-    linear-gradient(135deg, #ff00ff, #00ffff);
+  background-image: url('../../assets/image.jpg');
   border-radius: 12px;
   display: flex;
   align-items: center;
@@ -137,6 +135,8 @@ body {
   text-align: center;
   box-shadow: 0 0 40px rgba(255, 0, 255, 0.4);
   margin-bottom: 30px;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 .hero h1 {
@@ -329,4 +329,269 @@ body {
 .stat-label {
   font-size: 0.45rem;
   opacity: 0.85;
+}
+
+/* Reward Popup Styles */
+/* Reward Popup Styles */
+.reward-popup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 10000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.reward-popup.show {
+  opacity: 1;
+  pointer-events: all;
+}
+
+.reward-popup-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.8);
+  backdrop-filter: blur(5px);
+}
+
+.reward-popup-content {
+  position: relative;
+  background: linear-gradient(135deg, rgba(26, 26, 46, 0.95), rgba(10, 10, 15, 0.98));
+  border: 3px solid #00ffff;
+  border-radius: 20px;
+  padding: 40px 50px;
+  text-align: center;
+  box-shadow: 
+    0 0 50px rgba(0, 255, 255, 0.5),
+    0 0 100px rgba(131, 56, 236, 0.3),
+    inset 0 0 50px rgba(0, 0, 0, 0.5);
+  transform: scale(0.8);
+  animation: popupBounce 0.5s ease-out forwards;
+  max-width: 500px;
+  width: 90%;
+}
+
+@keyframes popupBounce {
+  0% {
+    transform: scale(0.5) translateY(-100px);
+    opacity: 0;
+  }
+  60% {
+    transform: scale(1.1) translateY(0);
+  }
+  100% {
+    transform: scale(1) translateY(0);
+    opacity: 1;
+  }
+}
+
+.gift-box {
+  font-size: 80px;
+  animation: giftShake 0.8s ease-in-out infinite;
+  margin-bottom: 20px;
+  filter: drop-shadow(0 0 20px rgba(255, 215, 0, 0.6));
+}
+
+@keyframes giftShake {
+  0%, 100% {
+    transform: rotate(0deg);
+  }
+  25% {
+    transform: rotate(-10deg) scale(1.1);
+  }
+  75% {
+    transform: rotate(10deg) scale(1.1);
+  }
+}
+
+.reward-title {
+  font-family: 'Press Start 2P', cursive;
+  font-size: 28px;
+  color: #00ffff;
+  margin-bottom: 10px;
+  text-shadow: 
+    0 0 20px rgba(0, 255, 255, 0.8),
+    0 0 40px rgba(0, 255, 255, 0.5);
+  animation: titleGlow 1.5s ease-in-out infinite;
+}
+
+@keyframes titleGlow {
+  0%, 100% {
+    text-shadow: 
+      0 0 20px rgba(0, 255, 255, 0.8),
+      0 0 40px rgba(0, 255, 255, 0.5);
+  }
+  50% {
+    text-shadow: 
+      0 0 30px rgba(0, 255, 255, 1),
+      0 0 60px rgba(0, 255, 255, 0.8),
+      0 0 90px rgba(255, 0, 110, 0.5);
+  }
+}
+
+.reward-subtitle {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 14px;
+  color: #ff006e;
+  margin-bottom: 30px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  transition: all 0.3s ease;
+}
+
+.reward-items {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+}
+
+.reward-item {
+  background: rgba(0, 0, 0, 0.5);
+  border: 2px solid #8338ec;
+  border-radius: 12px;
+  padding: 20px 30px;
+  min-width: 150px;
+  animation: itemFloat 2s ease-in-out infinite;
+  box-shadow: 0 0 20px rgba(131, 56, 236, 0.4);
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.reward-item.selectable {
+  cursor: pointer;
+}
+
+.reward-item.selectable:hover {
+  transform: translateY(-10px) scale(1.05);
+  border-color: #00ffff;
+  box-shadow: 
+    0 0 30px rgba(0, 255, 255, 0.6),
+    0 0 50px rgba(131, 56, 236, 0.5);
+}
+
+.reward-item.selected {
+  border-color: #00ff00;
+  background: rgba(0, 255, 0, 0.1);
+  box-shadow: 
+    0 0 40px rgba(0, 255, 0, 0.8),
+    0 0 80px rgba(0, 255, 0, 0.5);
+  animation: selectedPulse 0.5s ease-in-out;
+}
+
+@keyframes selectedPulse {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.15);
+  }
+}
+
+.reward-item.disabled {
+  opacity: 0.3;
+  pointer-events: none;
+  filter: grayscale(100%);
+}
+
+.reward-item:nth-child(1) {
+  animation-delay: 0.2s;
+}
+
+.reward-item:nth-child(2) {
+  animation-delay: 0.4s;
+}
+
+@keyframes itemFloat {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+.reward-icon {
+  font-size: 50px;
+  margin-bottom: 10px;
+  filter: drop-shadow(0 0 15px rgba(255, 215, 0, 0.5));
+}
+
+.reward-text {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  color: #ffffff;
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+  margin-bottom: 10px;
+}
+
+.reward-select-btn {
+  font-family: 'Press Start 2P', cursive;
+  font-size: 10px;
+  color: #00ffff;
+  margin-top: 10px;
+  padding: 8px 15px;
+  border: 2px solid #00ffff;
+  border-radius: 5px;
+  background: rgba(0, 255, 255, 0.1);
+  text-shadow: 0 0 10px rgba(0, 255, 255, 0.8);
+  transition: all 0.3s ease;
+}
+
+.reward-item.selectable:hover .reward-select-btn {
+  background: rgba(0, 255, 255, 0.3);
+  box-shadow: 0 0 15px rgba(0, 255, 255, 0.6);
+}
+
+.reward-instruction {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 12px;
+  color: #8338ec;
+  letter-spacing: 1px;
+  margin-top: 15px;
+  transition: all 0.3s ease;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .reward-popup-content {
+    padding: 30px 25px;
+  }
+  
+  .gift-box {
+    font-size: 60px;
+  }
+  
+  .reward-title {
+    font-size: 20px;
+  }
+  
+  .reward-items {
+    gap: 15px;
+  }
+  
+  .reward-item {
+    min-width: 120px;
+    padding: 15px 20px;
+  }
+  
+  .reward-icon {
+    font-size: 40px;
+  }
+  
+  .reward-select-btn {
+    font-size: 8px;
+    padding: 6px 12px;
+  }
 }

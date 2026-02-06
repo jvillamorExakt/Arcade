@@ -20,7 +20,14 @@
       #main-content {
         transition: opacity 0.3s ease;
         width: 100%;
+        overflow: auto;
+        scrollbar-width: none;   /* Firefox */
+  -ms-overflow-style: none;/* IE & Edge (legacy) */
+
       }
+       #main-content ::-webkit-scrollbar {
+    display: none;
+}
     </style>
   </head>
 
@@ -34,8 +41,8 @@
     <div class="profile-text">LEVEL: 1</div>
     <div class="profile-text">XP:</div>
     <div class="xp-bar">
-      <div class="xp-fill" style="width: 0%"></div>
-      <div class="xp-text">0 / 100</div>
+      <div class="xp-fill" style="width: 100%"></div>
+      <div class="xp-text"> 100 / 100</div>
     </div>
   </div>
 
@@ -75,8 +82,7 @@
           <!-- HERO -->
           <section class="hero">
             <div>
-              <h1>EXAKT LEVELING COMMUNITY QUESTING</h1>
-              <span>#TOGETHERWEPLAY</span>
+              
             </div>
           </section>
 
