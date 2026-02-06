@@ -255,4 +255,24 @@
 
 
 
-      
+      .approval-text {
+  display: inline-block;
+  padding: 8px 16px;
+  font-family: 'Press Start 2P', cursive;
+  font-size: 10px;
+  color: #ffd700;
+  background: rgba(255, 215, 0, 0.1);
+  border: 2px solid #ffd700;
+  border-radius: 4px;
+  text-transform: uppercase;
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.7;
+  }
+}

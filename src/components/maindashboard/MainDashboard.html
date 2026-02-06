@@ -23,55 +23,61 @@
       #main-content {
         transition: opacity 0.3s ease;
         width: 100%;
+        overflow: auto;
+        scrollbar-width: none;   /* Firefox */
+  -ms-overflow-style: none;/* IE & Edge (legacy) */
+
       }
+       #main-content ::-webkit-scrollbar {
+    display: none;
+}
     </style>
   </head>
 
   <body class="scanlines">
     <div class="app">
-      <aside class="sidebar">
-        <div class="logo">🎮 AEL</div>
+  <aside class="sidebar">
+  <div class="logo">🎮 AEL</div>
 
-        <div class="profile">
-          <div class="profile-text">USER: PLAYER 1</div>
-          <div class="profile-text">LEVEL: 1</div>
-          <div class="profile-text">XP:</div>
-          <div class="xp-bar">
-            <div class="xp-fill" style="width: 0%"></div>
-            <div class="xp-text">0 / 100</div>
-          </div>
-        </div>
+  <div class="profile">
+    <div class="profile-text">USER: PLAYER 1</div>
+    <div class="profile-text">LEVEL: 1</div>
+    <div class="profile-text">XP:</div>
+    <div class="xp-bar">
+      <div class="xp-fill" style="width: 100%"></div>
+      <div class="xp-text"> 100 / 100</div>
+    </div>
+  </div>
 
-        <nav class="nav">
-          <a href="#home">HOME</a>
-          <a href="#quests" class="active">QUESTS</a>
-          <a href="#announcement">ANNOUNCEMENT</a>
-          <a href="#referrals">REFERRALS</a>
-          <a href="#rewards">REWARDS</a>
-        </nav>
-        <br />
-        <!-- Admin / Quest Management Navigation -->
-        <div class="nav-section">
-          <h4>Quest Management</h4>
-          <nav class="nav">
-            <a href="#questmanagement">🛠️ Manage Quest</a>
-            <a href="#queststats">📊 Quest Stats</a>
-          </nav>
-        </div>
-        <br />
-        <div class="nav-section">
-          <h4>User Management</h4>
-          <nav class="nav">
-            <a href="#usermanagement">🛠️ Manage Users</a>
-            <a href="#createannouncement">📝 CREATE ANNOUNCEMENTS</a>
-          </nav>
-        </div>
+  <nav class="nav">
+    <a href="#home">HOME</a>
+    <a href="#quests" class="active">QUESTS</a>
+    <a href="#campaigns">CAMPAIGNS</a>
+    <a href="#referrals">REFERRALS</a>
+    <a href="#rewards">REWARDS</a>
+  </nav>
+  <br />
+  <!-- Admin / Quest Management Navigation -->
+  <div class="nav-section">
+    <h4>Quest Management</h4>
+    <nav class="nav">
+      <a href="#questmanagement">🛠️ Manage Quest</a>
+      <a href="#queststats">📊 Quest Stats</a>
+    </nav>
+  </div>
+  <br />
+  <div class="nav-section">
+    <h4>User Management</h4>
+    <nav class="nav">
+      <a href="#usermanagement">🛠️ Manage Users</a>
+    </nav>
+  </div>
 
-        <!-- Logout Button at Bottom -->
-        <div class="sidebar-footer">
-          <button class="logout-btn" id="logoutBtn">🚪 LOGOUT</button>
-        </div>
-      </aside>
+  <!-- Logout Button at Bottom -->
+  <div class="sidebar-footer">
+    <button class="logout-btn" id="logoutBtn">🚪 LOGOUT</button>
+  </div>
+</aside>
 
       <!-- MAIN CONTENT -->
       <div id="main-content">
@@ -79,8 +85,7 @@
           <!-- HERO -->
           <section class="hero">
             <div>
-              <h1>EXAKT LEVELING COMMUNITY QUESTING</h1>
-              <span>#TOGETHERWEPLAY</span>
+              
             </div>
           </section>
 

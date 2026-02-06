@@ -213,20 +213,22 @@ h1 {
   backdrop-filter: blur(3px);
   padding: 0; /* Added padding specification */
   margin: 0; /* Added margin specification */
+  overflow: auto;
 }
-
 .modal-content {
   background: linear-gradient(180deg, #111, #000);
-  margin: 5% auto; /* top/bottom auto for left/right centering */
-  padding: 40px; /* Already has padding on all sides */
+  margin: auto;
+  padding: 40px;
   border: 2px solid #00ffff;
   border-radius: 12px;
   width: 500px;
   max-width: 90%;
+  max-height: 90vh;   /* ✅ KEY FIX */
   position: relative;
   box-shadow: 0 0 50px rgba(0, 255, 255, 0.8);
   text-align: center;
 }
+
 
 .modal-content h2 {
   color: #00ffff;
