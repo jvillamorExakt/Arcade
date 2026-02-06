@@ -1,39 +1,57 @@
 function initManageRewards() {
   console.log("initManageRewards called!");
 
+  const GOLD_TO_POINT_RATE = 0.01; // 1 Gold = 0.01 Point
+
   const user = {
     avatar: "avatar.png",
     currentLevel: 5,
     currentEXP: 750,
     nextLevelEXP: 1000,
-    currentPoints: 2000, // Test with 0 or higher
+
+    currentGold: 100000, // 👈 MAIN CURRENCY
+    get currentPoints() {
+      return Math.floor(this.currentGold * GOLD_TO_POINT_RATE);
+    },
   };
 
   const userLevelElem = document.getElementById("user-level");
   const userExpElem = document.getElementById("user-exp-sub");
+  const userGoldElem = document.getElementById("user-gold");
   const userPointsElem = document.getElementById("user-points");
   const userAvatar = document.querySelector(".user-icon img");
 
-  if (!userLevelElem || !userExpElem || !userPointsElem || !userAvatar) {
+  if (
+    !userLevelElem ||
+    !userExpElem ||
+    !userGoldElem ||
+    !userPointsElem ||
+    !userAvatar
+  ) {
     console.log("Rewards elements not found - not on rewards page");
     return;
   }
 
+  /* ===== INITIAL UI SET ===== */
   userLevelElem.textContent = user.currentLevel;
   userExpElem.textContent = `${user.currentEXP} / ${user.nextLevelEXP} EXP`;
+  userGoldElem.textContent = user.currentGold;
   userPointsElem.textContent = user.currentPoints;
   userAvatar.src = user.avatar;
 
   const rewardCards = document.querySelectorAll(".reward-card");
 
   function updateRewards() {
+    // Always recalc points from gold
+    userGoldElem.textContent = user.currentGold;
+    userPointsElem.textContent = user.currentPoints;
+
     rewardCards.forEach((card) => {
       const requiredPoints = Number(card.dataset.points);
       const btn = card.querySelector(".redeem-btn");
 
       if (!btn) return;
 
-      // Enable/disable button based on points
       if (user.currentPoints >= requiredPoints) {
         btn.disabled = false;
         btn.textContent = "Redeem";
@@ -42,15 +60,16 @@ function initManageRewards() {
         btn.textContent = "Not enough points";
       }
 
-      // Click handler
       btn.onclick = () => {
         if (user.currentPoints >= requiredPoints) {
+          const goldCost = requiredPoints / GOLD_TO_POINT_RATE;
+
           alert(
-            `You redeemed ${requiredPoints} points for "${card.querySelector(".reward-title").textContent}"!`,
+            `You redeemed "${card.querySelector(".reward-title").textContent}"\n\nCost: ${goldCost} Gold (${requiredPoints} Points)`,
           );
-          user.currentPoints -= requiredPoints;
-          userPointsElem.textContent = user.currentPoints;
-          updateRewards(); // Refresh buttons immediately
+
+          user.currentGold -= goldCost;
+          updateRewards(); // Refresh UI instantly
         }
       };
     });
@@ -59,10 +78,9 @@ function initManageRewards() {
   updateRewards();
 }
 
-// Initialize on DOM load
+/* ===== INIT ===== */
 document.addEventListener("DOMContentLoaded", initManageRewards);
 
-// Re-initialize when navigating via router
 window.addEventListener("hashchange", () => {
-  setTimeout(initManageRewards, 600); // Wait for router to load rewards content
+  setTimeout(initManageRewards, 600);
 });

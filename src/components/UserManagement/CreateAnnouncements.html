@@ -1,0 +1,135 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Create Announcement | Exakt Leveling</title>
+
+    <!-- Fonts -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Orbitron:wght@400;700;900&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="CreateAnnouncement.css" />
+  </head>
+
+  <body class="create-announcement-scanlines">
+    <main class="create-announcement-container">
+      <section class="create-announcement-panel">
+        <h1>📢 CREATE ANNOUNCEMENT</h1>
+        <p class="create-announcement-subtitle">Admin Control Panel</p>
+
+        <form id="announcementForm">
+          <!-- TITLE -->
+          <div class="create-announcement-form-group">
+            <label class="create-announcement-label">Announcement Title</label>
+            <input
+              type="text"
+              id="title"
+              class="create-announcement-input"
+              placeholder="e.g. Server Maintenance"
+              required
+            />
+          </div>
+
+          <!-- TYPE -->
+          <div class="create-announcement-form-group">
+            <label class="create-announcement-label">Announcement Type</label>
+            <select id="type" class="create-announcement-select" required>
+              <option value="">-- SELECT TYPE --</option>
+              <option value="important">IMPORTANT</option>
+              <option value="update">UPDATE</option>
+              <option value="info">INFO</option>
+              <option value="event">EVENT</option>
+            </select>
+          </div>
+
+          <!-- ROLE -->
+          <div class="create-announcement-form-group">
+            <label class="create-announcement-label">Announcement For</label>
+            <select id="role" class="create-announcement-select" required>
+              <option value="">-- SELECT ROLE --</option>
+              <option value="questmaker">QUEST MAKER</option>
+              <option value="member">MEMBER</option>
+            </select>
+          </div>
+
+          <!-- DEPARTMENT -->
+          <div class="create-announcement-form-group">
+            <label class="create-announcement-label">DEPARTMENT</label>
+            <select id="department" class="create-announcement-select" required>
+              <option value="">-- SELECT DEPARTMENT --</option>
+              <option value="design">Technical Department</option>
+              <option value="development">QA Department</option>
+              <option value="marketing">System Engineering Department</option>
+            </select>
+          </div>
+
+          <!-- SUB DEPARTMENT -->
+          <div class="create-announcement-form-group">
+            <label class="create-announcement-label">SUB-DEPARTMENT</label>
+            <select
+              id="subdepartment"
+              class="create-announcement-select"
+              required
+            >
+              <option value="">-- SELECT SUB-DEPARTMENT --</option>
+              <option value="frontend">Web Developer</option>
+              <option value="backend">System Engineer</option>
+              <option value="qa">Quality Assurance</option>
+            </select>
+          </div>
+
+          <!-- MESSAGE -->
+          <div class="create-announcement-form-group">
+            <label class="create-announcement-label">Message</label>
+            <textarea
+              id="message"
+              class="create-announcement-textarea"
+              rows="5"
+              placeholder="Write your announcement here..."
+              required
+            ></textarea>
+          </div>
+
+          <!-- TAGS -->
+          <div class="create-announcement-form-group">
+            <label class="create-announcement-label">Tags</label>
+            <input
+              type="text"
+              id="tags"
+              class="create-announcement-input"
+              placeholder="#TOGETHERWEPLAY, GUILD GAMES"
+            />
+          </div>
+
+          <!-- ACTIONS -->
+          <div class="create-announcement-actions">
+            <button type="submit" class="create-announcement-btn primary">
+              Publish
+            </button>
+            <button type="reset" class="create-announcement-btn secondary">
+              Clear
+            </button>
+          </div>
+        </form>
+
+        <!-- PREVIEW -->
+        <div class="create-announcement-preview">
+          <h2>👁 LIVE PREVIEW</h2>
+          <div id="previewCard" class="create-announcement-card">
+            <span class="create-announcement-badge">TYPE</span>
+            <h3>Announcement Title</h3>
+            <p>Your message will appear here.</p>
+            <div class="create-announcement-tags"></div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- JS -->
+    <script src="CreateAnnouncement.js"></script>
+  </body>
+</html>
