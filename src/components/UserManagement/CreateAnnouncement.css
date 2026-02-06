@@ -1,0 +1,242 @@
+/* ===== RESET ===== */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* ===== BASE ===== */
+html,
+body {
+  height: 100%;
+}
+
+body.create-announcement-scanlines {
+  font-family: "Press Start 2P", cursive;
+  background: #0b233d;
+  color: #fff;
+
+  overflow-y: auto;
+  overflow-x: hidden;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+body.create-announcement-scanlines::-webkit-scrollbar {
+  width: 0px;
+  background: transparent;
+}
+
+/* ===== CENTER LAYOUT ===== */
+.create-announcement-container {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 30px 0;
+}
+
+/* ===== PANEL ===== */
+.create-announcement-panel {
+  width: 900px;
+  max-width: 95%;
+  background: linear-gradient(180deg, #111, #000);
+  border: 3px solid #00ffff;
+  border-radius: 14px;
+  padding: 30px;
+  box-shadow: 0 0 40px rgba(0, 255, 255, 0.4);
+  animation: panelEnter 0.5s ease-out;
+}
+
+@keyframes panelEnter {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.create-announcement-panel h1 {
+  font-size: 1.2rem;
+  color: #00ffff;
+  margin-bottom: 10px;
+}
+
+.create-announcement-subtitle {
+  font-size: 0.55rem;
+  margin-bottom: 25px;
+  opacity: 0.8;
+}
+
+/* ===== FORM ===== */
+.create-announcement-form-group {
+  margin-bottom: 18px;
+}
+
+.create-announcement-label {
+  font-size: 0.55rem;
+  display: block;
+  margin-bottom: 8px;
+}
+
+.create-announcement-input,
+.create-announcement-select,
+.create-announcement-textarea {
+  width: 100%;
+  padding: 12px;
+  font-family: inherit;
+  font-size: 0.55rem;
+  background: rgba(0, 0, 0, 0.6);
+  border: 2px solid #00ffff;
+  border-radius: 6px;
+  color: #fff;
+}
+
+.create-announcement-textarea {
+  resize: none;
+}
+
+.create-announcement-input:focus,
+.create-announcement-select:focus,
+.create-announcement-textarea:focus {
+  outline: none;
+  box-shadow: 0 0 12px rgba(0, 255, 255, 0.6);
+}
+
+/* ===== BUTTONS ===== */
+.create-announcement-actions {
+  display: flex;
+  gap: 15px;
+  margin-top: 15px;
+}
+
+.create-announcement-btn {
+  padding: 12px 22px;
+  font-size: 0.55rem;
+  font-family: inherit;
+  cursor: pointer;
+  border-radius: 6px;
+  border: 2px solid;
+  transition: all 0.3s ease;
+}
+
+.create-announcement-btn.primary {
+  background: #00ffff;
+  color: #000;
+  border-color: #00ffff;
+}
+
+.create-announcement-btn.primary:hover {
+  box-shadow: 0 0 15px rgba(0, 255, 255, 0.8);
+  transform: translateY(-2px);
+}
+
+.create-announcement-btn.secondary {
+  background: transparent;
+  color: #ff00ff;
+  border-color: #ff00ff;
+}
+
+.create-announcement-btn.secondary:hover {
+  box-shadow: 0 0 15px rgba(255, 0, 255, 0.8);
+  transform: translateY(-2px);
+}
+
+/* ===== PREVIEW ===== */
+.create-announcement-preview {
+  margin-top: 35px;
+}
+
+.create-announcement-preview h2 {
+  font-size: 0.7rem;
+  margin-bottom: 15px;
+}
+
+.create-announcement-card {
+  position: relative;
+  padding: 22px;
+  border-radius: 12px;
+  border: 2px solid #00ffff;
+  background: linear-gradient(180deg, #111, #000);
+}
+
+.create-announcement-card h3 {
+  font-size: 0.7rem;
+  margin-bottom: 10px;
+}
+
+.create-announcement-card p {
+  font-size: 0.55rem;
+  line-height: 1.6;
+  color: #ddd;
+}
+
+.create-announcement-badge {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  font-size: 0.45rem;
+  padding: 6px 10px;
+  background: #00ffff;
+  color: #000;
+  border-radius: 4px;
+}
+
+/* ===== VARIANTS ===== */
+.create-announcement-important {
+  border-color: gold;
+  box-shadow: 0 0 25px rgba(255, 215, 0, 0.6);
+  background: linear-gradient(180deg, #222, #111);
+}
+
+.create-announcement-update {
+  border-color: #ff00ff;
+  box-shadow: 0 0 25px rgba(255, 0, 255, 0.6);
+  background: linear-gradient(180deg, #222, #111);
+}
+
+.create-announcement-info {
+  border-color: #00ff88;
+  box-shadow: 0 0 25px rgba(0, 255, 136, 0.6);
+  background: linear-gradient(180deg, #222, #111);
+}
+
+.create-announcement-event {
+  border-color: #00ffff;
+  box-shadow: 0 0 25px rgba(0, 255, 255, 0.6);
+  background: linear-gradient(180deg, #222, #111);
+}
+
+/* ===== TAGS ===== */
+.create-announcement-tags {
+  display: flex;
+  gap: 10px;
+  margin-top: 12px;
+  flex-wrap: wrap;
+}
+
+.create-announcement-tags span {
+  font-size: 0.45rem;
+  padding: 6px 10px;
+  background: #00ffff;
+  color: #000;
+  border-radius: 4px;
+}
+
+/* ===== SCANLINES ===== */
+.create-announcement-scanlines::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background: repeating-linear-gradient(
+    to bottom,
+    rgba(255, 255, 255, 0.03),
+    rgba(255, 255, 255, 0.03) 1px,
+    transparent 1px,
+    transparent 3px
+  );
+  pointer-events: none;
+}

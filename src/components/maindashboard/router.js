@@ -8,12 +8,13 @@ console.log("Router loaded!"); // Debug line
 const routes = {
   home: null,
   quests: "../QuestBoard/QuestPage.html",
-  campaigns: "../campaigns/Campaigns.html",
+  announcement: "../Announcements/anouncement.html",
   referrals: "../referrals/Referrals.html",
   rewards: "../Rewards/RewardsPage.html",
   questmanagement: "../QuestManagement/ManageQuest.html",
   queststats: "../QuestManagement/QuestStats.html",
   usermanagement: "../UserManagement/CreateUser.html",
+  createannouncement: "../UserManagement/CreateAnnouncements.html",
 };
 
 let homeContent = "";
